@@ -55,6 +55,14 @@ textarea {
 	font-size: 1.6rem;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+}
+main {
+	flex: 1;
+}
+
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
