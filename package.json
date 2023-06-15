@@ -1,0 +1,23 @@
+{
+	"name": "utahjs-website",
+	"version": "3.0.0",
+	"description": "Version 3 of the UtahJS Website.",
+	"main": "index.js",
+	"author": "UtahJS Community",
+	"license": "ISC",
+	"devDependencies": {
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.2"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	}
+}
