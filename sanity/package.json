@@ -1,5 +1,6 @@
 {
-	"name": "utahjs-website",
+	"name": "utahjs-sanity",
+	"description": "UtahJS Sanity Studio",
 	"private": true,
 	"version": "2.0.0",
 	"main": "package.json",

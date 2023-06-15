@@ -1,5 +1,6 @@
 {
-	"name": "utahjs-website",
+	"name": "utahjs-next",
+	"description": "UtahJS Next.js",
 	"version": "3.0.0",
 	"private": true,
 	"scripts": {
