@@ -5,64 +5,59 @@ export default {
 	type: 'document',
 	fields: [
 		{
-			name: 'name',
 			title: 'Name',
+			name: 'name',
 			type: 'string',
 		},
 		{
-			name: 'role',
 			title: 'Role',
+			name: 'role',
 			type: 'string',
 		},
 		{
-			name: 'presentation',
 			title: 'Presentation',
+			name: 'presentation',
 			type: 'string',
 		},
 		{
-			name: 'description',
 			title: 'Description',
+			name: 'description',
 			type: 'string',
 		},
 		{
-			name: 'date_time',
 			title: 'Date & Time',
+			name: 'date_time',
 			type: 'datetime',
 		},
 		{
-			name: 'duration',
 			title: 'Duration',
+			name: 'duration',
 			type: 'number',
 			description: 'Length of the presentation in minutes',
 		},
-		// twitter
 		{
-			name: 'twitter',
 			title: 'Twitter',
+			name: 'twitter',
 			type: 'url',
 		},
-		// github
 		{
-			name: 'github',
 			title: 'Github',
+			name: 'github',
 			type: 'url',
 		},
-		// linkedin
 		{
-			name: 'linkedin',
 			title: 'LinkedIn',
+			name: 'linkedin',
 			type: 'url',
 		},
-		// website
 		{
-			name: 'website',
 			title: 'Website',
+			name: 'website',
 			type: 'url',
 		},
-		// image
 		{
-			name: 'image',
 			title: 'Image',
+			name: 'image',
 			type: 'image',
 			options: {
 				hotspot: true,
