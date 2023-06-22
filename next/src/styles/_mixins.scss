@@ -1,0 +1,16 @@
+@mixin media-query-tablet {
+	@media (max-width: var(--max-tablet-width)) {
+		@content;
+	}
+}
+
+@mixin media-query-mobile {
+	@media (max-width: $max-mobile-width) {
+		@content;
+	}
+}
+
+@mixin container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
