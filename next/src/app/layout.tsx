@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import '../styles/reset.scss';
-import '../styles/globals.scss';
+import '../styles/main.scss';
+import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body>
+			<body className={styles.body}>
 				<header>
 					<div className="container">
 						<h1>UtahJS - JavaScript Engineers of Utah</h1>
@@ -38,7 +38,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				</header>
 				<main>{children}</main>
 				<footer>
-					© 2022 UtahJS Built by Alex Puhl, John Bowser, Justin Howard and Steven Saunders as part of FreeCodeCamp SLC
+					<p>
+						© 2022 UtahJS Built by Alex Puhl, John Bowser, Justin Howard and Steven Saunders as part of
+						FreeCodeCamp SLC
+					</p>
 				</footer>
 			</body>
 		</html>
