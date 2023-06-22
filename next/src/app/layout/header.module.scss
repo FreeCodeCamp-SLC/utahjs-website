@@ -1,0 +1,40 @@
+@import '../../styles/mixins';
+
+.header {
+	.title_row {
+		background-color: rgb(43, 43, 43);
+		.container {
+			@include container;
+			align-items: center;
+			display: flex;
+			padding: 2rem 0;
+		}
+		img {
+			margin-right: 2rem;
+		}
+		h1 {
+			color: rgb(247, 221, 86);
+		}
+	}
+	nav {
+		background-color: #000;
+		ul {
+			@include container;
+			display: flex;
+			list-style: none;
+			padding: 0;
+		}
+		li {
+			margin-right: 1rem;
+			padding: 1rem 0;
+		}
+		a {
+			color: #aaaaaa;
+			text-decoration: none;
+			text-transform: uppercase;
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+}
