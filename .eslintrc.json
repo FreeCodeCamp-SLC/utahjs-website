@@ -1,0 +1,6 @@
+{
+	"extends": ["next/core-web-vitals", "@sanity/eslint-config-studio"],
+	"rules": {
+		"quotes": ["error", "backtick"]
+	}
+}
