@@ -1,10 +1,12 @@
-import codeOfConduct from './pages/codeOfConduct';
-import conference from './pages/conference';
-import footer from './siteSettings/footer';
-import homePage from './pages/home';
-import metaData from './siteSettings/metaData';
-import navigation from './siteSettings/navigation';
-import speaker from './pages/speaker';
-import sponsor from './sponsor';
+import codeOfConduct from './codeOfConduct-schema';
+import conference from './conference-schema';
+import footer from './siteSettings/footer-schema';
+import homePage from './home-schema';
+import metaData from './siteSettings/metaData-schema';
+import navigation from './siteSettings/navigation-schema';
+import speaker from './speaker-schema';
+import sponsor from './sponsor-schema';
 
-export const schemaTypes = [codeOfConduct, conference, footer, homePage, metaData, navigation, speaker, sponsor];
+const schemas = [codeOfConduct, conference, footer, homePage, metaData, navigation, speaker, sponsor];
+
+export default schemas;
