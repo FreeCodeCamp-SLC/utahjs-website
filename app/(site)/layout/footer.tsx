@@ -1,11 +1,21 @@
+import { getFooterData } from '@/sanity/sanity-utils';
 import styles from './footer.module.scss';
+import { PortableText } from '@portabletext/react';
 
-export default function Footer() {
+export default async function Footer() {
+	const footerData = await getFooterData();
+	if (!footerData) {
+		return (
+			<footer className={styles.footer}>
+				<p>No Footer Data</p>
+			</footer>
+		);
+	}
+
 	return (
 		<footer className={styles.footer}>
 			<p>
-				© 2022 UtahJS Built by Alex Puhl, John Bowser, Justin Howard and Steven Saunders as part of FreeCodeCamp
-				SLC
+				<PortableText value={footerData.content} />
 			</p>
 		</footer>
 	);

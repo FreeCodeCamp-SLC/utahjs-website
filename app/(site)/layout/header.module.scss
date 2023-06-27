@@ -1,4 +1,4 @@
-@import '../../styles/mixins';
+@import '@/app/styles/mixins';
 
 .header {
 	.title_row {
@@ -7,33 +7,42 @@
 			@include container;
 			align-items: center;
 			display: flex;
-			padding: 2rem 0;
+			padding: 2rem;
 		}
 		img {
 			margin-right: 2rem;
 		}
 		h1 {
 			color: rgb(247, 221, 86);
+			font-size: 2.4rem;
 		}
 	}
 	nav {
 		background-color: #000;
+
 		ul {
 			@include container;
 			display: flex;
 			list-style: none;
-			padding: 0;
+			padding: 0 2rem;
+			gap: 2rem;
 		}
 		li {
-			margin-right: 1rem;
 			padding: 1rem 0;
 		}
 		a {
 			color: #aaaaaa;
+			font-size: 1.8rem;
 			text-decoration: none;
 			text-transform: uppercase;
 			&:hover {
 				color: #fff;
+			}
+			@include media-query-laptop {
+				font-size: 1.6rem;
+			}
+			@include media-query-tablet {
+				font-size: 1.4rem;
 			}
 		}
 	}

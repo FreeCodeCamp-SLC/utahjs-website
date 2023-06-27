@@ -16,6 +16,17 @@ const navigation = {
 				source: `title`,
 			},
 		},
+		{
+			name: `openInNewTab`,
+			title: `Open in new tab`,
+			type: `boolean`,
+		},
+		{
+			name: `order`,
+			title: `Order`,
+			type: `number`,
+			description: `This will determine the order the links appear in the navbar`,
+		},
 	],
 };
 

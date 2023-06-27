@@ -4,7 +4,7 @@ const footer = {
 	type: `document`,
 	fields: [
 		{
-			name: `Content`,
+			name: `content`,
 			title: `Content`,
 			type: `array`,
 			of: [

@@ -1,7 +1,7 @@
 // schemas/pet.js
 const speaker = {
 	name: `speaker`,
-	title: `Speaker`,
+	title: `Speakers`,
 	type: `document`,
 	fields: [
 		{

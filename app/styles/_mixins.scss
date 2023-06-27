@@ -1,11 +1,17 @@
+@mixin media-query-laptop {
+	@media (max-width: 1024px) {
+		@content;
+	}
+}
+
 @mixin media-query-tablet {
-	@media (max-width: var(--max-tablet-width)) {
+	@media (max-width: 900px) {
 		@content;
 	}
 }
 
 @mixin media-query-mobile {
-	@media (max-width: $max-mobile-width) {
+	@media (max-width: 600px) {
 		@content;
 	}
 }
@@ -13,4 +19,5 @@
 @mixin container {
 	max-width: 1200px;
 	margin: 0 auto;
+	padding: 0 2rem;
 }

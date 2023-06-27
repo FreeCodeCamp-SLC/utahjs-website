@@ -13,21 +13,17 @@ export const myStructure = (S) =>
 							S.listItem()
 								.title(`Metadata`)
 								.child(S.document().schemaType(`metaData`).documentId(`metaData`)),
-							S.listItem()
-								.title(`Main Navigation`)
-								.child(S.document().schemaType(`navigation`).documentId(`navigation`)),
+							S.documentTypeListItem(`navigation`).title(`Main Navigation`),
 							S.listItem().title(`Footer`).child(S.document().schemaType(`footer`).documentId(`footer`)),
 						]),
 				),
+			S.divider(),
 			S.listItem().title(`Home`).child(S.document().schemaType(`home`).documentId(`home`)),
 			S.listItem().title(`Conference`).child(S.document().schemaType(`conference`).documentId(`conference`)),
 			S.listItem()
 				.title(`Code of Conduct`)
 				.child(S.document().schemaType(`codeOfConduct`).documentId(`codeOfConduct`)),
-			...S.documentTypeListItems().filter(
-				(listItem) =>
-					![`metaData`, `navigation`, `footer`, `home`, `conference`, `codeOfConduct`].includes(
-						listItem.getId(),
-					),
-			),
+			S.divider(),
+			S.documentTypeListItem(`speaker`),
+			S.documentTypeListItem(`sponsors`),
 		]);
