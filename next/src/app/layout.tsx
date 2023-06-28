@@ -36,9 +36,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						</nav>
 					</div>
 				</header>
-				<main>{children}</main>
+				{children}
 				<footer>
-					© 2022 UtahJS Built by Alex Puhl, John Bowser, Justin Howard and Steven Saunders as part of FreeCodeCamp SLC
+					© 2022 UtahJS Built by Alex Puhl, John Bowser, Justin Howard and Steven Saunders as part of
+					FreeCodeCamp SLC
 				</footer>
 			</body>
 		</html>

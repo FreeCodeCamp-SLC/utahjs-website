@@ -4,18 +4,18 @@ import Link from 'next/link';
 
 export default function Home() {
 	return (
-		<>
+		<main className={styles.main}>
 			<h1>Home Page</h1>
-			<div id="top-section-home">
+			<div className={styles.homeUTJS}>
 				<h2>UtahJS</h2>
 				<p>JavaScript Engineers of Utah</p>
 				<p>Lets learn together.</p>
 				<Link href="/conference">CONFERENCES</Link>
 				<Link href="/">JOIN SLACK</Link>
 			</div>
-			<div id="middle-section-home">
+			<div className={styles.homeGetInvolved}>
 				<h2>Get involved in JavaScript in Utah</h2>
-				<div id="button-paragraph">
+				<div className={styles.hi}>
 					<Link href="/conference">CONFERENCES</Link>
 					<p>We have a conference every year! Our latest conference details are at utahjs.com/conference.</p>
 				</div>
@@ -80,6 +80,6 @@ export default function Home() {
 				group of volunteers. To help out or make a donation or sponsor this site or an event please contact Ken
 				Snyder at ken@utahjs.com.
 			</p>
-		</>
+		</main>
 	);
 }
