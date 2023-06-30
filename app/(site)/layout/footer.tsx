@@ -14,9 +14,7 @@ export default async function Footer() {
 
 	return (
 		<footer className={styles.footer}>
-			<p>
-				<PortableText value={footerData.content} />
-			</p>
+			<PortableText value={footerData.content} />
 		</footer>
 	);
 }

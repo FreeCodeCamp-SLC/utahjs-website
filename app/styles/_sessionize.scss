@@ -1,8 +1,12 @@
 #EmbedWrapper {
+	margin-top: 3.2rem;
 	.sz-day__title {
 		display: none;
 	}
 	#sessionize.sessionize-wrapper {
+		.sz-cssgrid {
+			text-align: left;
+		}
 		.sz-cssgrid__track-label {
 			justify-content: center;
 		}

@@ -3,6 +3,13 @@
 import { useEffect } from 'react';
 import styles from './schedule.module.scss';
 
+// generateMetaData isn't working for some reason, likely something to do with 'use client' or sessionize
+export async function generateMetadata() {
+	return {
+		title: `UtahJS | Schedule`,
+	};
+}
+
 export default function Schedule() {
 	useEffect(() => {
 		// load sessionize embed

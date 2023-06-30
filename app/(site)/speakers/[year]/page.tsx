@@ -6,6 +6,13 @@ import Image from 'next/image';
 import { Speaker } from '@/types/speaker';
 import { getData } from '@/utils/fetch';
 
+export async function generateMetadata({ params }: { params: { year: string } }) {
+	const year = Number(params.year);
+	return {
+		title: `UtahJS | ${year} Speakers `,
+	};
+}
+
 export default async function Speakers({ params }: { params: { year: string } }) {
 	const sessionizeUrls = await getPastSpeakersData();
 	const year = Number(params.year);

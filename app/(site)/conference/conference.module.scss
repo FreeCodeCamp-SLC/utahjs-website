@@ -2,4 +2,70 @@
 
 .container {
 	@include container;
+	a {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.hero_section {
+		align-items: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: flex;
+		justify-content: flex-end;
+		min-height: 350px;
+	}
+	.hero_box {
+		background-color: rgba(22, 29, 14, 0.75);
+		border-radius: 1.2rem;
+		color: #fff;
+		margin-right: 15rem;
+		padding: 3.2rem;
+		h1 {
+			font-size: 2.2rem;
+			margin-bottom: 1rem;
+		}
+		p {
+			font-size: 1.8rem;
+			margin-bottom: 1rem;
+		}
+	}
+	.buttons {
+		display: flex;
+		gap: 8px;
+		a {
+			border-radius: 1rem;
+			color: #fff;
+			padding: 1rem;
+			text-decoration: none;
+		}
+		.primary_button {
+			background-color: #dd7d00;
+			&:hover {
+				background-color: #ff9000;
+			}
+			&:active {
+				background-color: #0062cc;
+			}
+		}
+		.secondary_button {
+			background-color: #fae034;
+			color: #000;
+			&:hover {
+				background-color: #fff28b;
+			}
+			&:active {
+				background-color: #545b62;
+				color: #fff;
+			}
+		}
+	}
+	.conference_info {
+		margin-top: 2rem;
+		p {
+			margin-bottom: 1rem;
+		}
+	}
 }
