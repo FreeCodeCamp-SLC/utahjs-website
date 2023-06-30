@@ -7,9 +7,9 @@
 	"private": true,
 	"version": "3.0.0",
 	"scripts": {
-		"dev": "next dev",
+		"start": "next dev",
 		"build": "next build",
-		"start": "next start",
+		"production": "next start",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -30,7 +30,7 @@
 		"@sanity/eslint-config-studio": "^2.0.1",
 		"@sanity/types": "^3.12.1",
 		"@types/node": "18.15.0",
-		"@types/react": "18.0.28",
+		"@types/react": "18.2.8",
 		"@types/react-dom": "18.0.11",
 		"eslint": "8.41.0",
 		"husky": "^8.0.3",

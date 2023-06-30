@@ -6,7 +6,8 @@ import metaData from './siteSettings/metaData-schema';
 import navigation from './siteSettings/navigation-schema';
 import speaker from './speaker-schema';
 import sponsor from './sponsor-schema';
+import pastSpeakers from './pastSpeakers-schema';
 
-const schemas = [codeOfConduct, conference, footer, homePage, metaData, navigation, speaker, sponsor];
+const schemas = [codeOfConduct, conference, footer, homePage, metaData, navigation, speaker, sponsor, pastSpeakers];
 
 export default schemas;

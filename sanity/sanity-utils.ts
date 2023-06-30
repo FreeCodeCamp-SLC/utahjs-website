@@ -1,8 +1,6 @@
 import { createClient, groq } from 'next-sanity';
-import { CodeOfConduct } from '@/types/CodeOfConduct';
-import { Footer } from '@/types/Footer';
-import { Navigation } from '@/types/Navigation';
 import clientConfig from './config/client-config';
+import { CodeOfConduct, Footer, Navigation, PastSpeakers } from '@/types/SanityFetches';
 
 export async function getConductData(): Promise<CodeOfConduct> {
 	return createClient(clientConfig).fetch(groq`*[_type == "codeOfConduct"][0]{
@@ -32,4 +30,14 @@ export async function getNavigationData(): Promise<Navigation[]> {
 		openInNewTab,
 		order
 	} | order(order asc)`);
+}
+
+export async function getPastSpeakersData(): Promise<PastSpeakers[]> {
+	return createClient(clientConfig).fetch(groq`*[_type == "pastSpeakers"] {
+		_id,
+		_createdAt,
+		_updatedAt,
+		year,
+		sessionizeUrl
+	} | order(year desc)`);
 }
