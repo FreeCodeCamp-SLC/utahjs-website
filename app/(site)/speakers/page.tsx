@@ -1,10 +1,16 @@
 import React from 'react';
-import { getPastSpeakersData } from '@/sanity/sanity-utils';
-import styles from './speakers.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Metadata } from 'next';
+import { getPastSpeakersData } from '@/sanity/sanity-utils';
 import { Speaker } from '@/types/speaker';
 import { getData } from '@/utils/fetch';
-import Link from 'next/link';
+import styles from './speakers.module.scss';
+
+export const metadata: Metadata = {
+	title: `UtahJS | 2023 Speakers`,
+	description: `Get involved in JavaScript in Utah! Let's learn together`,
+};
 
 export default async function Speakers() {
 	const sessionizeUrls = await getPastSpeakersData();
@@ -12,8 +18,6 @@ export default async function Speakers() {
 	const sessionizeUrl = sessionizeUrls.filter((speaker) => speaker.year === currentYear);
 	const url = sessionizeUrl[0].sessionizeUrl;
 	const speakers = await getData(url);
-
-	// console.log(speakers);
 
 	if (!sessionizeUrls) {
 		return (

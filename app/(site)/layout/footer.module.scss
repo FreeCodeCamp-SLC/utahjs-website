@@ -2,10 +2,16 @@
 
 .footer {
 	background-color: rgb(0, 0, 0);
-	padding: 0.8rem 2rem;
+	padding: 1rem 2rem;
 	width: 100%;
-	p {
-		@include container;
+	p,
+	a {
 		color: #fff;
+	}
+	a {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }

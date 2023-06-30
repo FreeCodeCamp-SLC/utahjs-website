@@ -7,6 +7,33 @@ export type CodeOfConduct = {
 	content: PortableTextBlock[];
 };
 
+export type Conference = {
+	_id: string;
+	_createdAt: Date;
+	_updatedAt: Date;
+	heroSection: {
+		heroImage: {
+			asset: {
+				_ref: string;
+			};
+		};
+		heroImageAltText: string;
+		title: string;
+		subtitle: string;
+		heroPrimaryButton: {
+			link: string;
+			text: string;
+			newTab: boolean;
+		};
+		heroSecondaryButton: {
+			link: string;
+			text: string;
+			newTab: boolean;
+		};
+	};
+	bodyContent: PortableTextBlock[];
+};
+
 export type Footer = {
 	_id: string;
 	_createdAt: Date;
