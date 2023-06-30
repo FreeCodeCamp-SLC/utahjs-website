@@ -2,7 +2,7 @@ import { PortableText } from '@portabletext/react';
 import { getConductData } from '@/sanity/sanity-utils';
 import styles from './conduct.module.scss';
 
-export default async function conduct() {
+export default async function Conduct() {
 	const conductData = await getConductData();
 	if (!conductData) {
 		return (

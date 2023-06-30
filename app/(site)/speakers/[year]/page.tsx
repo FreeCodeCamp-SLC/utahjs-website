@@ -1,19 +1,18 @@
 import React from 'react';
+import Link from 'next/link';
 import { getPastSpeakersData } from '@/sanity/sanity-utils';
-import styles from './speakers.module.scss';
+import styles from '../speakers.module.scss';
 import Image from 'next/image';
 import { Speaker } from '@/types/speaker';
 import { getData } from '@/utils/fetch';
-import Link from 'next/link';
 
-export default async function Speakers() {
+export default async function Speakers({ params }: { params: { year: string } }) {
 	const sessionizeUrls = await getPastSpeakersData();
+	const year = Number(params.year);
 	const currentYear = sessionizeUrls[0].year;
-	const sessionizeUrl = sessionizeUrls.filter((speaker) => speaker.year === currentYear);
+	const sessionizeUrl = sessionizeUrls.filter((speaker) => speaker.year === year);
 	const url = sessionizeUrl[0].sessionizeUrl;
 	const speakers = await getData(url);
-
-	// console.log(speakers);
 
 	if (!sessionizeUrls) {
 		return (
@@ -33,7 +32,7 @@ export default async function Speakers() {
 						<li key={session._id}>
 							<Link
 								href={session.year === currentYear ? `/speakers` : `/speakers/${session.year}`}
-								className={session.year === currentYear ? styles.active : ``}
+								className={session.year === year ? styles.active : ``}
 							>
 								{session.year}
 							</Link>
@@ -56,9 +55,7 @@ export default async function Speakers() {
 							</div>
 						</div>
 						<p>{speaker.bio}</p>
-						<p className={styles.presentation}>
-							Presentation: {speaker.sessions.map((session) => session.name)}
-						</p>
+						<p>Presentation: {speaker.sessions.map((session) => session.name)}</p>
 					</article>
 				))}
 			</div>
