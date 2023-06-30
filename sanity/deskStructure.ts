@@ -23,14 +23,33 @@ export const myStructure = (S) =>
 				),
 			S.divider(),
 			// The next 3 list items are singleton documents, and each document has a schema type and a documentId
-			S.listItem().title(`Home`).child(S.document().schemaType(`home`).documentId(`home`)),
-			S.listItem().title(`Conference`).child(S.document().schemaType(`conference`).documentId(`conference`)),
 			S.listItem()
-				.title(`Code of Conduct`)
-				.child(S.document().schemaType(`codeOfConduct`).documentId(`codeOfConduct`)),
+				.title(`Home Page`)
+				.child(S.document().schemaType(`home`).documentId(`home`).title(`Home Page`)),
+			S.listItem()
+				.title(`Code of Conduct Page`)
+				.child(
+					S.document().schemaType(`codeOfConduct`).documentId(`codeOfConduct`).title(`Code of Conduct Page`),
+				),
 			S.divider(),
-			// The next 3 list items are documents, and each document has a schema type. These ones will show a list of their ddocuments and allow you to create new ones.
-			S.documentTypeListItem(`speaker`),
-			S.documentTypeListItem(`pastSpeakers`),
-			S.documentTypeListItem(`sponsors`),
+			// group conference, speakers, pastSpeakers, sponsors
+			S.listItem()
+				.title(`Conference`)
+				.child(
+					S.list()
+						.title(`Conference`)
+						.items([
+							S.listItem()
+								.title(`Conference Page`)
+								.child(
+									S.document()
+										.schemaType(`conference`)
+										.documentId(`conference`)
+										.title(`Conference Page`),
+								),
+							S.documentTypeListItem(`speaker`).title(`Featured Speakers`),
+							S.documentTypeListItem(`pastSpeakers`),
+							S.documentTypeListItem(`sponsors`).title(`Conference Sponsors`),
+						]),
+				),
 		]);
