@@ -1,6 +1,6 @@
-const home = {
-	name: `home`,
-	title: `Home`,
+const homePage = {
+	name: `homePage`,
+	title: `Home Page`,
 	type: `document`,
 	fields: [
 		{
@@ -246,4 +246,4 @@ const home = {
 	],
 };
 
-export default home;
+export default homePage;
