@@ -19,22 +19,19 @@ export default async function Conference() {
 		);
 	}
 	const heroSection = conferenceData.heroSection;
-	const heroSectionImage = heroSection.heroImage.asset;
-	const strippedRef = heroSectionImage._ref.replace(`image-`, ``).replace(`-jpg`, ``);
-	const imageUrl = `https://cdn.sanity.io/images/qn5czer2/dev/${strippedRef}.jpg`;
-	const primaryButton = heroSection.heroPrimaryButton;
-	const secondaryButton = heroSection.heroSecondaryButton;
+	const primaryButton = heroSection.primaryButton;
+	const secondaryButton = heroSection.secondaryButton;
 
 	return (
 		<div className={styles.container}>
-			<section className={styles.hero_section} style={{ backgroundImage: `url(${imageUrl})` }}>
+			<section className={styles.hero_section} style={{ backgroundImage: `url(${heroSection.backgroundImage})` }}>
 				<div className={styles.hero_box}>
-					<h1>{heroSection.title}</h1>
+					<h1>{heroSection.heroHeader}</h1>
 					<p>{heroSection.subtitle}</p>
 					<div className={styles.buttons}>
 						<a
 							className={styles.primary_button}
-							href={primaryButton.link}
+							href={primaryButton.url}
 							target={primaryButton.newTab ? `_blank` : ``}
 							rel="noreferrer"
 						>
@@ -42,7 +39,7 @@ export default async function Conference() {
 						</a>
 						<a
 							className={styles.secondary_button}
-							href={secondaryButton.link}
+							href={secondaryButton.url}
 							target={secondaryButton.newTab ? `_blank` : ``}
 						>
 							{secondaryButton.text}

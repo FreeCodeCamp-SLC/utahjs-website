@@ -4,18 +4,24 @@ const sponsor = {
 	type: `document`,
 	fields: [
 		{
+			name: `name`,
+			title: `Name`,
+			type: `string`,
+		},
+		{
 			name: `sponsor`,
 			title: `Sponsor`,
 			type: `image`,
+			fields: [
+				{
+					name: `alt`,
+					title: `Alt Text`,
+					type: `string`,
+				},
+			],
 			options: {
 				hotspot: true,
 			},
-		},
-		{
-			name: `altText`,
-			title: `alt text`,
-			type: `string`,
-			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: `sponsorUrl`,
@@ -23,11 +29,6 @@ const sponsor = {
 			type: `url`,
 		},
 	],
-	preview: {
-		select: {
-			title: `altText`,
-		},
-	},
 };
 
 export default sponsor;

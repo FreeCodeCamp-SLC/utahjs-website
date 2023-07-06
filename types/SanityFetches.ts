@@ -11,23 +11,20 @@ export type Conference = {
 	_id: string;
 	_createdAt: Date;
 	_updatedAt: Date;
+	pageTitle: string;
 	heroSection: {
-		heroImage: {
-			asset: {
-				_ref: string;
-			};
-		};
-		heroImageAltText: string;
-		title: string;
+		backgroundImage: string;
+		heroImage: string;
+		heroHeader: string;
 		subtitle: string;
-		heroPrimaryButton: {
-			link: string;
+		primaryButton: {
 			text: string;
+			url: string;
 			newTab: boolean;
 		};
-		heroSecondaryButton: {
-			link: string;
+		secondaryButton: {
 			text: string;
+			url: string;
 			newTab: boolean;
 		};
 	};
@@ -39,6 +36,65 @@ export type Footer = {
 	_createdAt: Date;
 	_updatedAt: Date;
 	content: PortableTextBlock[];
+};
+
+export type Home = {
+	_id: string;
+	_createdAt: Date;
+	_updatedAt: Date;
+	title: string;
+	heroSection: {
+		heroBackgroundImageUrl: string;
+		heroImageUrl: string;
+		heroHeader: string;
+		heroSubtext1: string;
+		heroSubtext2: string;
+		heroPrimaryButton: {
+			primaryButtonText: string;
+			primaryButtonLink: string;
+			primaryButtonNewTab: boolean;
+		};
+		heroSecondaryButton: {
+			secondaryButtonText: string;
+			secondaryButtonLink: string;
+			secondaryButtonNewTab: boolean;
+		};
+	};
+	getInvolvedSection: {
+		getInvolvedHeader: string;
+		getInvolvedLinks: [
+			singleLink: {
+				text: string;
+				url: string;
+				newTab: boolean;
+				description: {
+					name: `description`;
+					title: `Description`;
+					type: `array`;
+					of: [
+						{
+							type: `block`;
+						},
+					];
+				};
+			},
+		];
+	};
+	otherMeetupsSection: {
+		otherMeetupsHeader: string;
+		otherMeetups: [
+			{
+				name: string;
+				url: string;
+				image: {
+					asset: {
+						url: string;
+					};
+				};
+			},
+		];
+	};
+	homePageFooter: PortableTextBlock[];
 };
 
 export type Navigation = {

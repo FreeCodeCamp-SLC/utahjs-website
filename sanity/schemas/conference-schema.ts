@@ -4,23 +4,48 @@ const conference = {
 	type: `document`,
 	fields: [
 		{
+			name: `pageTitle`,
+			title: `Page Title`,
+			type: `string`,
+		},
+		{
 			name: `heroSection`,
 			title: `Hero Section`,
 			type: `object`,
 			fields: [
 				{
+					name: `backgroundImage`,
+					title: `Background Image`,
+					type: `image`,
+					fields: [
+						{
+							name: `alt`,
+							title: `Alt Text`,
+							type: `string`,
+						},
+					],
+					options: {
+						hotspot: true,
+					},
+				},
+				{
 					name: `heroImage`,
 					title: `Hero Image`,
 					type: `image`,
+					fields: [
+						{
+							name: `alt`,
+							title: `Alt Text`,
+							type: `string`,
+						},
+					],
+					options: {
+						hotspot: true,
+					},
 				},
 				{
-					name: `heroImageAltText`,
-					title: `Hero Image Alt Text`,
-					type: `string`,
-				},
-				{
-					name: `title`,
-					title: `Title`,
+					name: `heroHeader`,
+					title: `Hero Header`,
 					type: `string`,
 				},
 				{
@@ -29,8 +54,8 @@ const conference = {
 					type: `string`,
 				},
 				{
-					name: `heroPrimaryButton`,
-					title: `Hero Primary Button`,
+					name: `primaryButton`,
+					title: `Primary Button`,
 					type: `object`,
 					fields: [
 						{
@@ -39,9 +64,14 @@ const conference = {
 							type: `string`,
 						},
 						{
-							name: `link`,
-							title: `Link`,
+							name: `url`,
+							title: `URL`,
 							type: `url`,
+							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+								rule.uri({
+									allowRelative: true,
+									scheme: [`http`, `https`, `mailto`, `tel`],
+								}),
 						},
 						{
 							name: `newTab`,
@@ -51,8 +81,8 @@ const conference = {
 					],
 				},
 				{
-					name: `heroSecondaryButton`,
-					title: `Hero Secondary Button`,
+					name: `secondaryButton`,
+					title: `Secondary Button`,
 					type: `object`,
 					fields: [
 						{
@@ -61,9 +91,14 @@ const conference = {
 							type: `string`,
 						},
 						{
-							name: `link`,
-							title: `Link`,
+							name: `url`,
+							title: `URL`,
 							type: `url`,
+							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+								rule.uri({
+									allowRelative: true,
+									scheme: [`http`, `https`, `mailto`, `tel`],
+								}),
 						},
 						{
 							name: `newTab`,

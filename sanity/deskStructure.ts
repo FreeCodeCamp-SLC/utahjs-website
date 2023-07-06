@@ -1,5 +1,5 @@
 // import sanity typescript definitions
-export const myStructure = (S) =>
+export const myStructure = (S: any) =>
 	// This is the structure used by Sanity Studio to build the Desk, it's the very first pane to the left.
 	S.list()
 		.title(`Dashboard`)
@@ -47,7 +47,7 @@ export const myStructure = (S) =>
 										.documentId(`conference`)
 										.title(`Conference Page`),
 								),
-							S.documentTypeListItem(`speaker`).title(`Featured Speakers`),
+							S.documentTypeListItem(`featuredSpeakers`).title(`Featured Speakers`),
 							S.documentTypeListItem(`pastSpeakers`),
 							S.documentTypeListItem(`sponsors`).title(`Conference Sponsors`),
 						]),

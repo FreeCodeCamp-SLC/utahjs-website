@@ -1,13 +1,28 @@
 // schemas/pet.js
 const speaker = {
-	name: `speaker`,
-	title: `Speakers`,
+	name: `featuredSpeakers`,
+	title: `Featured Speakers`,
 	type: `document`,
 	fields: [
 		{
 			name: `name`,
 			title: `Name`,
 			type: `string`,
+		},
+		{
+			name: `image`,
+			title: `Image`,
+			type: `image`,
+			fields: [
+				{
+					name: `alt`,
+					title: `Alt Text`,
+					type: `string`,
+				},
+			],
+			options: {
+				hotspot: true,
+			},
 		},
 		{
 			name: `role`,
@@ -25,7 +40,7 @@ const speaker = {
 			type: `string`,
 		},
 		{
-			name: `date_time`,
+			name: `dateTime`,
 			title: `Date & Time`,
 			type: `datetime`,
 		},
@@ -55,22 +70,14 @@ const speaker = {
 			title: `Website`,
 			type: `url`,
 		},
-		{
-			name: `image`,
-			title: `Image`,
-			type: `image`,
-			options: {
-				hotspot: true,
-			},
-		},
 	],
 	orderings: [
 		{
-			name: `date_time`,
+			name: `dateTime`,
 			title: `Date/Time`,
 			by: [
 				{
-					field: `date_time`,
+					field: `dateTime`,
 					direction: `asc`,
 				},
 			],

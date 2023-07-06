@@ -14,6 +14,18 @@ const pastSpeakers = {
 			type: `url`,
 		},
 	],
+	orderings: [
+		{
+			name: `yearAsc`,
+			title: `Year Descending`,
+			by: [
+				{
+					field: `year`,
+					direction: `desc`,
+				},
+			],
+		},
+	],
 };
 
 export default pastSpeakers;

@@ -14,11 +14,6 @@ export const metadata: Metadata = {
 
 export default async function Speakers() {
 	const sessionizeUrls = await getPastSpeakersData();
-	const currentYear = sessionizeUrls[0].year;
-	const sessionizeUrl = sessionizeUrls.filter((speaker) => speaker.year === currentYear);
-	const url = sessionizeUrl[0].sessionizeUrl;
-	const speakers = await getData(url);
-
 	if (!sessionizeUrls) {
 		return (
 			<div className={styles.container}>
@@ -27,6 +22,12 @@ export default async function Speakers() {
 			</div>
 		);
 	}
+
+	const currentYear = sessionizeUrls[0].year;
+	const sessionizeUrl = sessionizeUrls.filter((speaker) => speaker.year === currentYear);
+	const url = sessionizeUrl[0].sessionizeUrl;
+	const speakers = await getData(url);
+
 	return (
 		<div className={styles.container}>
 			<h1>Conference Speakers</h1>
