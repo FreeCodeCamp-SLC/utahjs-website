@@ -25,31 +25,16 @@ export const myStructure = (S: any) =>
 			// The next 3 list items are singleton documents, and each document has a schema type and a documentId
 			S.listItem()
 				.title(`Home Page`)
-				.child(S.document().schemaType(`home`).documentId(`home`).title(`Home Page`)),
+				.child(S.document().schemaType(`homePage`).documentId(`homePage`).title(`Home Page`)),
 			S.listItem()
 				.title(`Code of Conduct Page`)
 				.child(
-					S.document().schemaType(`codeOfConduct`).documentId(`codeOfConduct`).title(`Code of Conduct Page`),
+					S.document()
+						.schemaType(`codeOfConductPage`)
+						.documentId(`codeOfConductPage`)
+						.title(`Code of Conduct Page`),
 				),
 			S.divider(),
-			// group conference, speakers, pastSpeakers, sponsors
-			S.listItem()
-				.title(`Conference`)
-				.child(
-					S.list()
-						.title(`Conference`)
-						.items([
-							S.listItem()
-								.title(`Conference Page`)
-								.child(
-									S.document()
-										.schemaType(`conference`)
-										.documentId(`conference`)
-										.title(`Conference Page`),
-								),
-							S.documentTypeListItem(`featuredSpeakers`).title(`Featured Speakers`),
-							S.documentTypeListItem(`pastSpeakers`),
-							S.documentTypeListItem(`sponsors`).title(`Conference Sponsors`),
-						]),
-				),
+			// This list item is a document list, and it has a title and a schema type, this is for managing conferences by year.
+			S.documentTypeListItem(`conference`).title(`Conferences`),
 		]);

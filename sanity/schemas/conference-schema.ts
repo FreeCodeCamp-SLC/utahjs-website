@@ -1,123 +1,57 @@
+import featuredSpeakers from './featuredSpeakers-schema';
+import sponsorSchema from './sponsor-schema';
+
 const conference = {
 	name: `conference`,
 	title: `Conference`,
 	type: `document`,
 	fields: [
 		{
-			name: `pageTitle`,
-			title: `Page Title`,
+			name: `name`,
+			title: `Name`,
 			type: `string`,
 		},
 		{
-			name: `heroSection`,
-			title: `Hero Section`,
-			type: `object`,
-			fields: [
-				{
-					name: `backgroundImage`,
-					title: `Background Image`,
-					type: `image`,
-					fields: [
-						{
-							name: `alt`,
-							title: `Alt Text`,
-							type: `string`,
-						},
-					],
-					options: {
-						hotspot: true,
-					},
-				},
-				{
-					name: `heroImage`,
-					title: `Hero Image`,
-					type: `image`,
-					fields: [
-						{
-							name: `alt`,
-							title: `Alt Text`,
-							type: `string`,
-						},
-					],
-					options: {
-						hotspot: true,
-					},
-				},
-				{
-					name: `heroHeader`,
-					title: `Hero Header`,
-					type: `string`,
-				},
-				{
-					name: `subtitle`,
-					title: `Subtitle`,
-					type: `string`,
-				},
-				{
-					name: `primaryButton`,
-					title: `Primary Button`,
-					type: `object`,
-					fields: [
-						{
-							name: `text`,
-							title: `Text`,
-							type: `string`,
-						},
-						{
-							name: `url`,
-							title: `URL`,
-							type: `url`,
-							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
-								rule.uri({
-									allowRelative: true,
-									scheme: [`http`, `https`, `mailto`, `tel`],
-								}),
-						},
-						{
-							name: `newTab`,
-							title: `Open in new tab`,
-							type: `boolean`,
-						},
-					],
-				},
-				{
-					name: `secondaryButton`,
-					title: `Secondary Button`,
-					type: `object`,
-					fields: [
-						{
-							name: `text`,
-							title: `Text`,
-							type: `string`,
-						},
-						{
-							name: `url`,
-							title: `URL`,
-							type: `url`,
-							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
-								rule.uri({
-									allowRelative: true,
-									scheme: [`http`, `https`, `mailto`, `tel`],
-								}),
-						},
-						{
-							name: `newTab`,
-							title: `Open in new tab`,
-							type: `boolean`,
-						},
-					],
-				},
-			],
+			name: `date`,
+			title: `Date`,
+			type: `datetime`,
 		},
 		{
-			name: `bodyContent`,
-			title: `Body Content`,
+			name: `location`,
+			title: `Location`,
+			type: `string`,
+		},
+		{
+			name: `featuredSpeakers`,
+			title: `Featured Speakers`,
 			type: `array`,
-			of: [
-				{
-					type: `block`,
-				},
-			],
+			of: [featuredSpeakers],
+		},
+		{
+			name: `speakersUrl`,
+			title: `Speakers URL`,
+			type: `url`,
+			validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+				rule.uri({
+					allowRelative: true,
+					scheme: [`http`, `https`, `mailto`, `tel`],
+				}),
+		},
+		{
+			name: `scheduleUrl`,
+			title: `Schedule URL`,
+			type: `url`,
+			validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+				rule.uri({
+					allowRelative: true,
+					scheme: [`http`, `https`, `mailto`, `tel`],
+				}),
+		},
+		{
+			name: `sponsors`,
+			title: `Sponsors`,
+			type: `array`,
+			of: [sponsorSchema],
 		},
 	],
 };

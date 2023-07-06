@@ -1,6 +1,6 @@
-const codeOfConduct = {
-	name: `codeOfConduct`,
-	title: `Code of Conduct`,
+const codeOfConductPage = {
+	name: `codeOfConductPage`,
+	title: `Code of Conduct Page`,
 	type: `document`,
 	fields: [
 		{
@@ -16,4 +16,4 @@ const codeOfConduct = {
 	],
 };
 
-export default codeOfConduct;
+export default codeOfConductPage;

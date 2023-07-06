@@ -1,5 +1,5 @@
 // schemas/pet.js
-const speaker = {
+const featuredSpeakers = {
 	name: `featuredSpeakers`,
 	title: `Featured Speakers`,
 	type: `document`,
@@ -85,4 +85,4 @@ const speaker = {
 	],
 };
 
-export default speaker;
+export default featuredSpeakers;

@@ -1,4 +1,4 @@
-const sponsor = {
+const sponsors = {
 	name: `sponsors`,
 	title: `Sponsors`,
 	type: `document`,
@@ -31,4 +31,4 @@ const sponsor = {
 	],
 };
 
-export default sponsor;
+export default sponsors;
