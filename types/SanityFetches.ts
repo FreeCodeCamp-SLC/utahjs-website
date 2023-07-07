@@ -31,6 +31,12 @@ export type Conference = {
 	bodyContent: PortableTextBlock[];
 };
 
+export type ConferenceScheduleUrl = {
+	_id: string;
+	date: Date;
+	scheduleUrl: string;
+};
+
 export type Footer = {
 	_id: string;
 	_createdAt: Date;
