@@ -15,12 +15,6 @@ export async function generateMetadata({ params }: { params: { year: string } })
 
 export default async function Speakers({ params }: { params: { year: string } }) {
 	const sessionizeUrls = await getPastSpeakersData();
-	const year = Number(params.year);
-	const currentYear = sessionizeUrls[0].year;
-	const sessionizeUrl = sessionizeUrls.filter((speaker) => speaker.year === year);
-	const url = sessionizeUrl[0].sessionizeUrl;
-	const speakers = await getData(url);
-
 	if (!sessionizeUrls) {
 		return (
 			<div className={styles.container}>
@@ -29,22 +23,35 @@ export default async function Speakers({ params }: { params: { year: string } })
 			</div>
 		);
 	}
+
+	const selectedYear = Number(params.year);
+	const currentYear = new Date(sessionizeUrls[0].date).getFullYear();
+	const sessionizeUrl = sessionizeUrls.filter((speaker) => {
+		const year = new Date(speaker.date).getFullYear();
+		return year === selectedYear;
+	});
+	const selectedYearSpeakersUrl = sessionizeUrl[0].speakersUrl;
+	const speakers = await getData(selectedYearSpeakersUrl);
+
 	return (
 		<div className={styles.container}>
 			<h1>Conference Speakers</h1>
 			<nav>
 				<h2>Year:</h2>
 				<ul>
-					{sessionizeUrls.map((session) => (
-						<li key={session._id}>
-							<Link
-								href={session.year === currentYear ? `/speakers` : `/speakers/${session.year}`}
-								className={session.year === year ? styles.active : ``}
-							>
-								{session.year}
-							</Link>
-						</li>
-					))}
+					{sessionizeUrls.map((session) => {
+						const year = new Date(session.date).getFullYear();
+						return (
+							<li key={session._id}>
+								<Link
+									href={currentYear === year ? `/speakers` : `/speakers/${year}`}
+									className={selectedYear === year ? styles.active : ``}
+								>
+									{year}
+								</Link>
+							</li>
+						);
+					})}
 				</ul>
 			</nav>
 			<div className={styles.speakerList}>

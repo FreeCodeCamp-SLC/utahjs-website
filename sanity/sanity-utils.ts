@@ -90,11 +90,9 @@ export async function getNavigationData(): Promise<Navigation[]> {
 }
 
 export async function getPastSpeakersData(): Promise<PastSpeakers[]> {
-	return createClient(clientConfig).fetch(groq`*[_type == "pastSpeakers"] {
-		_id,
-		_createdAt,
-		_updatedAt,
-		year,
-		sessionizeUrl
-	} | order(year desc)`);
+	return createClient(clientConfig).fetch(groq`*[_type == "conference"] {
+  		_id,
+   		date,
+    	speakersUrl
+	} | order(date desc)`);
 }

@@ -111,13 +111,6 @@ export type Navigation = {
 
 export type PastSpeakers = {
 	_id: string;
-	_createdAt: Date;
-	_updatedAt: Date;
-	year: number;
-	sessionizeUrl: string;
-};
-
-export type PastConferenceYears = {
-	_id: string;
-	year: number;
+	date: Date;
+	speakersUrl: string;
 };
