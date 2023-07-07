@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { getConferenceScheduleData } from '@/sanity/sanityFetch-utils';
+import { ConferenceScheduleUrl } from '@/types/SanityFetches';
 import styles from './schedule.module.scss';
 
 // generateMetaData isn't working for some reason, likely something to do with 'use client' or sessionize
@@ -11,7 +13,13 @@ export async function generateMetadata() {
 }
 
 export default function Schedule() {
+	const [schedule, setSchedule] = useState<ConferenceScheduleUrl | null>(null);
+
 	useEffect(() => {
+		getConferenceScheduleData().then((data) => {
+			setSchedule(data);
+		});
+
 		// load sessionize embed
 		const script = document.createElement(`script`);
 		script.src = `https://sessionize.com/api/v2/uce3x9i3/view/GridSmart`;
@@ -29,6 +37,15 @@ export default function Schedule() {
 		};
 		document.body.appendChild(script);
 	}, []);
+
+	if (!schedule) {
+		return (
+			<div className={styles.container}>
+				<h1>Conference Schedule</h1>
+				<p>No Data</p>
+			</div>
+		);
+	}
 
 	return (
 		<div className={styles.container}>

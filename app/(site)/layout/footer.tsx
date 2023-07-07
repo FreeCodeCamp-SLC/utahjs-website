@@ -1,4 +1,4 @@
-import { getFooterData } from '@/sanity/sanity-utils';
+import { getFooterData } from '@/sanity/sanityFetch-utils';
 import styles from './footer.module.scss';
 import { PortableText } from '@portabletext/react';
 

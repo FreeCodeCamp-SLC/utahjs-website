@@ -31,6 +31,12 @@ export type Conference = {
 	bodyContent: PortableTextBlock[];
 };
 
+export type ConferenceScheduleUrl = {
+	_id: string;
+	date: Date;
+	scheduleUrl: string;
+};
+
 export type Footer = {
 	_id: string;
 	_createdAt: Date;
@@ -111,13 +117,6 @@ export type Navigation = {
 
 export type PastSpeakers = {
 	_id: string;
-	_createdAt: Date;
-	_updatedAt: Date;
-	year: number;
-	sessionizeUrl: string;
-};
-
-export type PastConferenceYears = {
-	_id: string;
-	year: number;
+	date: Date;
+	speakersUrl: string;
 };

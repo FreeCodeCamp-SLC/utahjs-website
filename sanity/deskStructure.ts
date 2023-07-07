@@ -27,6 +27,9 @@ export const myStructure = (S: any) =>
 				.title(`Home Page`)
 				.child(S.document().schemaType(`homePage`).documentId(`homePage`).title(`Home Page`)),
 			S.listItem()
+				.title(`Conference Page`)
+				.child(S.document().schemaType(`conferencePage`).documentId(`conferencePage`).title(`Conference Page`)),
+			S.listItem()
 				.title(`Code of Conduct Page`)
 				.child(
 					S.document()

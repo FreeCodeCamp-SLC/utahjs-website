@@ -28,6 +28,24 @@ const navigation = {
 			description: `This will determine the order the links appear in the navbar`,
 		},
 	],
+	preview: {
+		select: {
+			title: `title`,
+			subtitle: `order`,
+		},
+	},
+	orderings: [
+		{
+			name: `orderAsc`,
+			title: `Order Ascending`,
+			by: [
+				{
+					field: `order`,
+					direction: `asc`,
+				},
+			],
+		},
+	],
 };
 
 export default navigation;

@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import { getConferenceData } from '@/sanity/sanity-utils';
+import { getConferenceData } from '@/sanity/sanityFetch-utils';
 import styles from './conference.module.scss';
 
 export async function generateMetadata() {

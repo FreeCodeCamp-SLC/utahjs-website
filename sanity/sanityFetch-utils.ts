@@ -1,6 +1,14 @@
 import { createClient, groq } from 'next-sanity';
 import clientConfig from './config/client-config';
-import { CodeOfConduct, Conference, Footer, Home, Navigation, PastSpeakers } from '@/types/SanityFetches';
+import {
+	CodeOfConduct,
+	Conference,
+	ConferenceScheduleUrl,
+	Footer,
+	Home,
+	Navigation,
+	PastSpeakers,
+} from '@/types/SanityFetches';
 
 export async function getConductData(): Promise<CodeOfConduct> {
 	return createClient(clientConfig).fetch(groq`*[_type == "codeOfConduct"][0]{
@@ -12,7 +20,7 @@ export async function getConductData(): Promise<CodeOfConduct> {
 }
 
 export async function getConferenceData(): Promise<Conference> {
-	return createClient(clientConfig).fetch(groq`*[_type == "conference"][0]{
+	return createClient(clientConfig).fetch(groq`*[_type == "conferencePage"][0]{
 		"heroSection": {
 			"backgroundImage": heroSection.backgroundImage.asset->url,
 			"heroImage": heroSection.heroImage.asset->url,
@@ -31,6 +39,14 @@ export async function getConferenceData(): Promise<Conference> {
 		},
 		bodyContent
 	}`);
+}
+
+export async function getConferenceScheduleData(): Promise<ConferenceScheduleUrl> {
+	return createClient(clientConfig).fetch(groq`*[_type == "conference"] {
+		_id,
+		date,
+		scheduleUrl
+	} | order(date desc)[0..0]`);
 }
 
 export async function getFooterData(): Promise<Footer> {
@@ -90,11 +106,9 @@ export async function getNavigationData(): Promise<Navigation[]> {
 }
 
 export async function getPastSpeakersData(): Promise<PastSpeakers[]> {
-	return createClient(clientConfig).fetch(groq`*[_type == "pastSpeakers"] {
-		_id,
-		_createdAt,
-		_updatedAt,
-		year,
-		sessionizeUrl
-	} | order(year desc)`);
+	return createClient(clientConfig).fetch(groq`*[_type == "conference"] {
+  		_id,
+   		date,
+    	speakersUrl
+	} | order(date desc)`);
 }

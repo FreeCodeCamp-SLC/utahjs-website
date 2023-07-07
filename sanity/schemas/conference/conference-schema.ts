@@ -54,6 +54,31 @@ const conference = {
 			of: [sponsorSchema],
 		},
 	],
+	preview: {
+		select: {
+			title: `name`,
+			date: `date`,
+		},
+		prepare(selection: { title: any; date: any }) {
+			const { title, date } = selection;
+			return {
+				title: title,
+				subtitle: date ? new Date(date).getFullYear() : ``,
+			};
+		},
+	},
+	orderings: [
+		{
+			name: `dateDesc`,
+			title: `Date new->old`,
+			by: [
+				{
+					field: `date`,
+					direction: `desc`,
+				},
+			],
+		},
+	],
 };
 
 export default conference;
