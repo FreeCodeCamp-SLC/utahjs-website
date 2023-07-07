@@ -20,7 +20,7 @@ export async function getConductData(): Promise<CodeOfConduct> {
 }
 
 export async function getConferenceData(): Promise<Conference> {
-	return createClient(clientConfig).fetch(groq`*[_type == "conference"][0]{
+	return createClient(clientConfig).fetch(groq`*[_type == "conferencePage"][0]{
 		"heroSection": {
 			"backgroundImage": heroSection.backgroundImage.asset->url,
 			"heroImage": heroSection.heroImage.asset->url,
