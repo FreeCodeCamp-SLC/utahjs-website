@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getPastSpeakersData } from '@/sanity/sanity-utils';
+import { getPastSpeakersData } from '@/sanity/sanityFetch-utils';
 import styles from '../speakers.module.scss';
 import Image from 'next/image';
 import { Speaker } from '@/types/speaker';

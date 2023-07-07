@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { getPastSpeakersData } from '@/sanity/sanity-utils';
+import { getPastSpeakersData } from '@/sanity/sanityFetch-utils';
 import { Speaker } from '@/types/speaker';
 import { getData } from '@/utils/fetch';
 import styles from './speakers.module.scss';

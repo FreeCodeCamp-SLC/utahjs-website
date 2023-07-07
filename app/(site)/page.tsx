@@ -1,4 +1,4 @@
-import { getHomeData } from '@/sanity/sanity-utils';
+import { getHomeData } from '@/sanity/sanityFetch-utils';
 // import styles from './page.module.scss';
 
 export default async function Home() {

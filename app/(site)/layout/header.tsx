@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getNavigationData } from '@/sanity/sanity-utils';
+import { getNavigationData } from '@/sanity/sanityFetch-utils';
 import styles from './header.module.scss';
 
 export default async function Header() {
