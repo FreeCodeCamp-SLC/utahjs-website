@@ -3,6 +3,7 @@
 	min-height: calc(100vh - 140px);
 	text-align: center;
 	display: block;
+	box-sizing: border-box;
 
 	.homeUTJS {
 		position: absolute;
@@ -19,9 +20,50 @@
 		border-radius: 8px;
 		font-size: 14px;
 	}
-
-	.homeGetInvolved {
-		background-color: aqua;
+	.centerContent {
+		color: white;
+		max-width: 680px;
+		padding: 0px 5px;
+		margin: 20px auto 0px;
+		text-align: left;
+		.homeGetInvolved {
+			margin: 0px 0px 20px;
+			background-color: rgb(34, 34, 34);
+			border-radius: 8px;
+			padding: 20px;
+			.getInvolvedSection {
+				flex-direction: row;
+				text-align: left;
+			}
+		}
+	}
+	.btn {
+		font-weight: 400;
+		text-transform: uppercase;
+		color: rgb(255, 255, 255);
+		text-decoration: none;
+	}
+	#btnConf {
+		background-color: rgb(246, 224, 90);
+		color: rgb(51, 51, 51);
+	}
+	#btnSlack {
+	}
+	#btnEvent {
+	}
+	#btnLehi {
+	}
+	#btnSlc {
+	}
+	#btnOgden {
+	}
+	#btnLearners {
+	}
+	#btnLinkedin {
+	}
+	#btnTwitter {
+	}
+	#btnVideos {
 	}
 }
 
