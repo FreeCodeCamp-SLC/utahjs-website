@@ -25,7 +25,7 @@
 		"source.fixAll.eslint": true
 	},
 	"editor.formatOnSave": true,
-	"editor.tabSize": 4,
+	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false
 }
