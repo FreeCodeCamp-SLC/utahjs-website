@@ -6,11 +6,11 @@ import { ConferenceScheduleUrl } from '@/types/SanityFetches';
 import styles from './schedule.module.scss';
 
 // generateMetaData isn't working for some reason, likely something to do with 'use client' or sessionize
-export async function generateMetadata() {
-	return {
-		title: `UtahJS | Schedule`,
-	};
-}
+// export async function generateMetadata() {
+// 	return {
+// 		title: `UtahJS | Schedule`,
+// 	};
+// }
 
 export default function Schedule() {
 	const [schedule, setSchedule] = useState<ConferenceScheduleUrl | null>(null);
