@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+echo 'husky pre commit hook'
+npm run pre-commit
