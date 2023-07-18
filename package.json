@@ -42,12 +42,12 @@
 		"eslint-plugin-prettier": "^5.0.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",
-		"prettier": "^3.0.0",
+		"prettier": "^3.0.0-alpha.6",
 		"sass": "^1.62.1",
 		"typescript": "5.1.3"
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx,css,scss,md}": [
+		"*.{js,jsx,ts,tsx,css,scss}": [
 			"prettier --write",
 			"eslint --max-warnings 0"
 		],
