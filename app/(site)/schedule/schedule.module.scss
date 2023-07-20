@@ -1,0 +1,35 @@
+@import '../../styles/mixins';
+
+// There is a _sessionize.scss style sheet for styling the sessionize widget.
+// Located in app\styles\_sessionize.scss
+
+.container {
+	@include container;
+	padding-top: 3.2rem;
+	text-align: center;
+	h1 {
+		font-size: 2.6rem;
+		margin-bottom: 1rem;
+	}
+	.call_to_action {
+		display: flex;
+		gap: 4rem;
+		justify-content: center;
+		a {
+			color: #007bff;
+			text-decoration: none;
+			&:hover {
+				color: #0056b3;
+				text-decoration: underline;
+			}
+			&:active {
+				color: #007bff;
+			}
+		}
+	}
+	.disclaimer {
+		color: #666;
+		margin: 3.2rem 0 1.6rem 0;
+		font-style: italic;
+	}
+}

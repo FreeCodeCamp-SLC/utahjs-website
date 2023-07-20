@@ -1,0 +1,60 @@
+@import '@/app/styles/mixins';
+
+.container {
+	@include container;
+	nav {
+		align-items: center;
+		display: flex;
+		gap: 1.6rem;
+		h2 {
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+	}
+	ul {
+		display: flex;
+		gap: 3.2rem;
+		list-style: none;
+		padding: 0;
+		a {
+			color: #888;
+			font-size: 1.8rem;
+			font-weight: 600;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+			&:active,
+			&.active {
+				color: #000;
+				font-weight: bold;
+			}
+		}
+	}
+	article {
+		border: 1px solid #ccc;
+		margin-bottom: 16px;
+		padding: 16px;
+		& > div {
+			display: flex;
+			gap: 1rem;
+			margin-bottom: 1rem;
+		}
+		h2 {
+			font-size: 2rem;
+			font-weight: bold;
+			line-height: 130%;
+			margin: 0;
+		}
+		p:not(p:last-child) {
+			margin-bottom: 1rem;
+		}
+		.presentation,
+		.tagline {
+			font-weight: bold;
+		}
+		.presentation {
+			color: #ff9000;
+		}
+	}
+}

@@ -1,0 +1,35 @@
+#EmbedWrapper {
+	margin-top: 3.2rem;
+	.sz-day__title {
+		display: none;
+	}
+	#sessionize.sessionize-wrapper {
+		.sz-cssgrid {
+			text-align: left;
+		}
+		.sz-cssgrid__track-label {
+			justify-content: center;
+		}
+		.sz-cssgrid .sz-session.sz-session--service .sz-session__card {
+			background-color: #333;
+		}
+		.sz-session {
+			&.sz-room--33919 .sz-session__card {
+				background-color: #7a4bc6;
+			}
+			&.sz-room--33920 .sz-session__card {
+				background-color: #4b7fc6;
+			}
+			&.sz-room--33921 .sz-session__card {
+				background-color: #35924a;
+			}
+		}
+
+		.sz-powered-by {
+			display: none;
+		}
+	}
+	.sessionize-loader .sz-spinner {
+		display: none;
+	}
+}

@@ -1,0 +1,17 @@
+@import '../../styles/mixins';
+
+.footer {
+	background-color: rgb(0, 0, 0);
+	padding: 1rem 2rem;
+	width: 100%;
+	p,
+	a {
+		color: #fff;
+	}
+	a {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
