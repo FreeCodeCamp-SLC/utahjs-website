@@ -1,4 +1,107 @@
 .main {
+	background-color: rgb(255, 255, 255);
+	min-height: calc(100vh - 140px);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	.homeUTJS {
+		// position: absolute;
+		display: flex;
+		flex-direction: column;
+		-webkit-box-align: center;
+		align-items: center;
+		height: fit-content;
+		color: rgb(255, 255, 255);
+		background-color: rgba(22, 29, 14, 0.6);
+		padding: 20px;
+		max-width: 460px;
+		margin: 0px auto;
+		border-radius: 8px;
+		font-size: 14px;
+	}
+	.centerContent {
+		color: white;
+		max-width: 680px;
+		padding: 0px 5px;
+		margin: 20px auto 0px;
+		text-align: left;
+		.homeGetInvolved {
+			margin: 0px 0px 20px;
+			background-color: rgb(34, 34, 34);
+			border-radius: 8px;
+			padding: 20px;
+			.getInvolvedSection {
+				flex-direction: row;
+				text-align: left;
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+	.btn {
+		font-weight: 400;
+		text-transform: uppercase;
+		text-decoration: none;
+		display: inline-block;
+		font-weight: 400;
+		color: #212529;
+		text-align: center;
+		vertical-align: middle;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-color: transparent;
+		border: 1px solid transparent;
+		padding: 0.375rem 0.75rem;
+		margin-bottom: 40px;
+		font-size: 1rem;
+		line-height: 1.5;
+		border-radius: 0.25rem;
+		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+			box-shadow 0.15s ease-in-out;
+	}
+	#btnConf0,
+	#btnConf1 {
+		color: rgb(51, 51, 51);
+		background-color: rgb(246, 224, 90);
+	}
+	// #btnConf1 {
+	// 	background-color: rgb(246, 224, 90);
+	// 	color: rgb(51, 51, 51);
+	// }
+	#btnSlack0,
+	#btnSlack1 {
+		color: rgb(255, 255, 255);
+		background-color: rgb(15, 165, 19);
+	}
+	// #btnSlack1 {
+	// }
+	#btnEvent {
+		background-color: rgb(32, 149, 242);
+	}
+	#btnLehi {
+		background-color: rgb(101, 22, 217);
+	}
+	#btnSlc {
+		background-color: rgb(177, 19, 186);
+	}
+	#btnOgden {
+		background-color: rgb(232, 29, 98);
+	}
+	#btnLearners {
+		background-color: rgb(254, 86, 33);
+	}
+	#btnLinkedin {
+		background-color: rgb(246, 224, 90);
+		color: rgb(51, 51, 51);
+	}
+	#btnTwitter {
+		background-color: rgb(15, 165, 19);
+	}
+	#btnVideos {
+		background-color: rgb(32, 149, 242);
+	}
 }
 
 /* Mobile */
