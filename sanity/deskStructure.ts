@@ -14,9 +14,7 @@ export const myStructure = (S: any) =>
 						.title(`Site Settings`)
 						.items([
 							// I have two singleton documents, and one document list in this group.
-							S.listItem()
-								.title(`Metadata`)
-								.child(S.document().schemaType(`metaData`).documentId(`metaData`)),
+							S.listItem().title(`Metadata`).child(S.document().schemaType(`metaData`).documentId(`metaData`)),
 							S.documentTypeListItem(`navigation`).title(`Main Navigation`),
 							S.listItem().title(`Footer`).child(S.document().schemaType(`footer`).documentId(`footer`)),
 						]),
@@ -32,10 +30,7 @@ export const myStructure = (S: any) =>
 			S.listItem()
 				.title(`Code of Conduct Page`)
 				.child(
-					S.document()
-						.schemaType(`codeOfConductPage`)
-						.documentId(`codeOfConductPage`)
-						.title(`Code of Conduct Page`),
+					S.document().schemaType(`codeOfConductPage`).documentId(`codeOfConductPage`).title(`Code of Conduct Page`),
 				),
 			S.divider(),
 			// This list item is a document list, and it has a title and a schema type, this is for managing conferences by year.

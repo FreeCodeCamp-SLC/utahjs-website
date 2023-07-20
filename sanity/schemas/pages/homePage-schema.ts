@@ -1,3 +1,12 @@
+type UriRuleOptions = {
+	allowRelative: boolean;
+	scheme: string[];
+};
+
+type Rule = {
+	uri: (options: UriRuleOptions) => void; // Replace void with the actual return type if it's not void.
+};
+
 const homePage = {
 	name: `homePage`,
 	title: `Home Page`,
@@ -73,7 +82,7 @@ const homePage = {
 							name: `url`,
 							title: `Url`,
 							type: `url`,
-							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+							validation: (rule: Rule) =>
 								rule.uri({
 									allowRelative: true,
 									scheme: [`http`, `https`, `mailto`, `tel`],
@@ -101,7 +110,7 @@ const homePage = {
 							name: `url`,
 							title: `Url`,
 							type: `url`,
-							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+							validation: (rule: Rule) =>
 								rule.uri({
 									allowRelative: true,
 									scheme: [`http`, `https`, `mailto`, `tel`],
@@ -146,9 +155,7 @@ const homePage = {
 									name: `url`,
 									title: `Url`,
 									type: `url`,
-									validation: (rule: {
-										uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any;
-									}) =>
+									validation: (rule: Rule) =>
 										rule.uri({
 											allowRelative: true,
 											scheme: [`http`, `https`, `mailto`, `tel`],
@@ -204,9 +211,7 @@ const homePage = {
 									name: `url`,
 									title: `Url`,
 									type: `url`,
-									validation: (rule: {
-										uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any;
-									}) =>
+									validation: (rule: Rule) =>
 										rule.uri({
 											allowRelative: true,
 											scheme: [`http`, `https`, `mailto`, `tel`],

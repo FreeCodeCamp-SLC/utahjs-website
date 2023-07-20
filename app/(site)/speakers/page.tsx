@@ -64,9 +64,7 @@ export default async function Speakers() {
 							</div>
 						</div>
 						<p>{speaker.bio}</p>
-						<p className={styles.presentation}>
-							Presentation: {speaker.sessions.map((session) => session.name)}
-						</p>
+						<p className={styles.presentation}>Presentation: {speaker.sessions.map((session) => session.name)}</p>
 					</article>
 				))}
 			</div>
