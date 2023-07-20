@@ -10,10 +10,10 @@ export default function Home() {
 				<h2>UtahJS</h2>
 				<p>JavaScript Engineers of Utah</p>
 				<p>Lets learn together.</p>
-				<Link href="/conference" id="btnConf">
+				<Link href="/conference" className={styles.btn} id={styles.btnConf0}>
 					CONFERENCES
 				</Link>
-				<Link href="/" id="btnSlack">
+				<Link href="/" className={styles.btn} id={styles.btnSlack0}>
 					JOIN SLACK
 				</Link>
 			</div>
@@ -21,7 +21,7 @@ export default function Home() {
 				<div className={styles.homeGetInvolved}>
 					<h2>Get involved in JavaScript in Utah</h2>
 					<div className={styles.getInvolvedSection}>
-						<Link href="/conference" className={styles.btn} id={styles.btnConf}>
+						<Link href="/conference" className={styles.btn} id={styles.btnConf1}>
 							CONFERENCES
 						</Link>
 						<p>
@@ -29,7 +29,7 @@ export default function Home() {
 						</p>
 					</div>
 					<div className={styles.getInvolvedSection}>
-						<Link href="/" className={styles.btn} id={styles.btnSlack}>
+						<Link href="/" className={styles.btn} id={styles.btnSlack1}>
 							JOIN SLACK
 						</Link>
 						<p>
