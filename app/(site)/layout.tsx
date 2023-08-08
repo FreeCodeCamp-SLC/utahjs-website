@@ -1,8 +1,9 @@
-import { Metadata } from 'next';
 import styles from './layout/layout.module.scss';
 import Header from './layout/header';
 import Footer from './layout/footer';
 import '../styles/main.scss';
+
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	title: `UtahJS - JavaScript Engineers of Utah`,
