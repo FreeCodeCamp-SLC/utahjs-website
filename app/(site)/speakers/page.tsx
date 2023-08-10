@@ -1,16 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Metadata } from 'next';
 import { getPastSpeakersData } from '@/sanity/sanityFetch-utils';
 import { Speaker } from '@/types/speaker';
 import { getData } from '@/utils/fetch';
 import styles from './speakers.module.scss';
 
-export const metadata: Metadata = {
-	title: `UtahJS | 2023 Speakers`,
-	description: `Get involved in JavaScript in Utah! Let's learn together`,
-};
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const sessionizeUrls = await getPastSpeakersData();
+	const currentYear = new Date(sessionizeUrls[0].date).getFullYear();
+	return {
+		title: `UtahJS | ${currentYear} Speakers`,
+	};
+}
 
 export default async function Speakers() {
 	const sessionizeUrls = await getPastSpeakersData();
