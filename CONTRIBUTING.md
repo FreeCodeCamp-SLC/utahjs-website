@@ -10,7 +10,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 3. Install the dependencies with `npm install` (be sure you run `nvm use` first to ensure you are using the correct node version)
 4. Create a branch for your feature or fix with `git checkout -b branch-name` or `git switch -c branch-name`. We recommend naming your branch something like `#123-fix-description` where `123` is the issue number if applicable, followed by a brief description of the change.
 5. Make your changes to the code
-6. Commit your changes and push the branch to GitHub with `git push origin branch-name`
+6. Commit your changes and push the branch to GitHub with `git push -u origin branch-name`
 7. Submit a pull request to the main(FreeCodeCamp-SLC) repository's `dev` branch explaining your changes and a quick note on how to best test/verify the changes
 
 ## Local Development
