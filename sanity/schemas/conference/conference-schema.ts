@@ -48,10 +48,33 @@ const conference = {
 				}),
 		},
 		{
-			name: `sponsors`,
-			title: `Sponsors`,
+			name: `sponsorSection`,
+			title: `Sponsor Section`,
+			type: `object`,
+			fields: [
+				{
+					name: `sponsorSectionTitle`,
+					title: `Sponsor Section Title`,
+					type: `string`,
+				},
+				{
+					name: `sponsors`,
+					title: `Sponsors`,
+					type: `array`,
+					of: [sponsorSchema],
+				},
+			],
+		},
+
+		{
+			name: `fallbackMessage`,
+			title: `Fallback Message`,
 			type: `array`,
-			of: [sponsorSchema],
+			of: [
+				{
+					type: `block`,
+				},
+			],
 		},
 	],
 	preview: {

@@ -29,12 +29,30 @@ export type Conference = {
 		};
 	};
 	bodyContent: PortableTextBlock[];
+	fallbackMessage: PortableTextBlock[];
 };
 
 export type ConferenceScheduleUrl = {
 	_id: string;
 	date: Date;
 	scheduleUrl: string;
+};
+
+export type ConferenceSponsors = {
+	_id: string;
+	date: Date;
+	title: string;
+	sponsors: [
+		name: string,
+		sponsorUrl: string,
+		sponsorLevel: string,
+		sponsorImage: {
+			alt: string;
+			asset: {
+				url: string;
+			};
+		},
+	];
 };
 
 export type Footer = {
@@ -119,4 +137,10 @@ export type PastSpeakers = {
 	_id: string;
 	date: Date;
 	speakersUrl: string;
+};
+
+export type ConferenceFallbackMessage = {
+	_id: string;
+	date: Date;
+	fallbackMessage: PortableTextBlock[];
 };

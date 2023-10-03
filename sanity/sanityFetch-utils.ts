@@ -3,7 +3,9 @@ import clientConfig from './config/client-config';
 import {
 	CodeOfConduct,
 	Conference,
+	ConferenceFallbackMessage,
 	ConferenceScheduleUrl,
+	ConferenceSponsors,
 	Footer,
 	Home,
 	Navigation,
@@ -37,7 +39,8 @@ export async function getConferenceData(): Promise<Conference> {
 				"newTab": heroSection.secondaryButton.newTab
 			}
 		},
-		bodyContent
+		bodyContent,
+		fallbackMessage
 	}`);
 }
 
@@ -47,6 +50,15 @@ export async function getConferenceScheduleData(): Promise<ConferenceScheduleUrl
 		date,
 		scheduleUrl
 	} | order(date desc)[0..0]`);
+}
+
+export async function getConferenceSponsors(): Promise<ConferenceSponsors> {
+	return createClient(clientConfig).fetch(groq`*[_type == "conference"] {
+		_id,
+		date,
+		"title": sponsorSection.sponsorSectionTitle,
+		"sponsors": sponsorSection.sponsors,
+	} | order(date desc)[0]`);
 }
 
 export async function getFooterData(): Promise<Footer> {
@@ -111,4 +123,12 @@ export async function getPastSpeakersData(): Promise<PastSpeakers[]> {
    		date,
     	speakersUrl
 	} | order(date desc)`);
+}
+
+export async function getConferenceFallbackMessage(): Promise<ConferenceFallbackMessage> {
+	return createClient(clientConfig).fetch(groq`*[_type == "conference"] {
+		_id,
+		date,
+		fallbackMessage
+	} | order(date desc)[0]`);
 }

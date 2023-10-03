@@ -119,6 +119,16 @@ const conferencePage = {
 				},
 			],
 		},
+		{
+			name: `fallbackMessage`,
+			title: `Fallback Message`,
+			type: `array`,
+			of: [
+				{
+					type: `block`,
+				},
+			],
+		},
 	],
 };
 
