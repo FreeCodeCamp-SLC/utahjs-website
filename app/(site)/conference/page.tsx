@@ -3,6 +3,15 @@
 import { PortableText } from '@portabletext/react';
 import { getConferenceData, getConferenceFallbackMessage, getConferenceSponsors } from '@/sanity/sanityFetch-utils';
 import styles from './conference.module.scss';
+import Image from 'next/image';
+import clientConfig from '@/sanity/config/client-config';
+import imageUrlBuilder from '@sanity/image-url';
+
+const builder = imageUrlBuilder(clientConfig);
+
+function urlFor(source) {
+	return builder.image(source);
+}
 
 export async function generateMetadata() {
 	return {
@@ -12,23 +21,25 @@ export async function generateMetadata() {
 
 export default async function Conference() {
 	const conferenceData = await getConferenceData();
-	console.log('conferenceData:');
-	console.log(conferenceData);
+	// console.log('conferenceData:');
+	// console.log(conferenceData);
 	const conferenceFallbackMessage = await getConferenceFallbackMessage();
 	const sponsorSection = await getConferenceSponsors();
 	const todaysDate = new Date();
-	console.log('todaysDate:');
-	console.log(todaysDate);
-	// console.log('sponsorSection:');
-	// console.log(sponsorSection);
-	const bronzeSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'bronze');
-	// console.log('bronzeSponsors:');
-	// console.log(bronzeSponsors);
+	// console.log('todaysDate:');
+	// console.log(todaysDate);
+	console.log('sponsorSection:');
+	console.log(sponsorSection);
+	const platinumSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'platinum');
+
+	const goldSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'gold');
+
 	const silverSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'silver');
-	// console.log('silverSponsors:');
-	// console.log(silverSponsors);
-	console.log('conferenceFallbackMessage:');
-	console.log(conferenceFallbackMessage);
+
+	const bronzeSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'bronze');
+
+	// console.log('conferenceFallbackMessage:');
+	// console.log(conferenceFallbackMessage);
 	// if (!conferenceData) {
 	// 	return (
 	// 		<div className={styles.container}>
@@ -37,6 +48,8 @@ export default async function Conference() {
 	// 		</div>
 	// 	);
 	// }
+	let goldSponsorsSection;
+
 	let silverSponsorsSection;
 	if (silverSponsors.length > 0) {
 		silverSponsorsSection = (
@@ -45,7 +58,7 @@ export default async function Conference() {
 				<ul>
 					{silverSponsors.map((sponsor) => (
 						<li key={sponsor._key}>
-							<p>{sponsor.name}</p>
+							<Image src={sponsor.sponsorImage.asset.url} alt={sponsor.sponsorImage.alt} />
 						</li>
 					))}
 				</ul>
@@ -60,7 +73,7 @@ export default async function Conference() {
 				<ul>
 					{bronzeSponsors.map((sponsor) => (
 						<li key={sponsor._key}>
-							<p>{sponsor.name}</p>
+							<Image src={urlFor(sponsor.sponsorImage.asset.url)} alt={sponsor.sponsorImage.alt} />
 						</li>
 					))}
 				</ul>
@@ -103,6 +116,8 @@ export default async function Conference() {
 				</div>
 				<div className="sponsors-column">
 					<h2>{sponsorSection.title}</h2>
+					{platinumSponsors}
+					{goldSponsors}
 					{silverSponsorsSection}
 					{bronzeSponsorsSection}
 				</div>

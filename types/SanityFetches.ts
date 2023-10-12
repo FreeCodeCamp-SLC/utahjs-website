@@ -43,13 +43,16 @@ export type ConferenceSponsors = {
 	date: Date;
 	title: string;
 	sponsors: [
-		name: string,
-		sponsorUrl: string,
-		sponsorLevel: string,
-		sponsorImage: {
-			alt: string;
-			asset: {
-				url: string;
+		{
+			_key: string;
+			name: string;
+			sponsorUrl: string;
+			sponsorLevel: string;
+			sponsorImage: {
+				alt: string;
+				asset: {
+					url: string;
+				};
 			};
 		},
 	];
