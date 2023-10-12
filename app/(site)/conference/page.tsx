@@ -23,9 +23,9 @@ export default async function Conference() {
 	const conferenceData = await getConferenceData();
 	// console.log('conferenceData:');
 	// console.log(conferenceData);
-	const conferenceFallbackMessage = await getConferenceFallbackMessage();
+	// const conferenceFallbackMessage = await getConferenceFallbackMessage();
 	const sponsorSection = await getConferenceSponsors();
-	const todaysDate = new Date();
+	// const todaysDate = new Date();
 	// console.log('todaysDate:');
 	// console.log(todaysDate);
 	console.log('sponsorSection:');
@@ -48,7 +48,7 @@ export default async function Conference() {
 	// 		</div>
 	// 	);
 	// }
-	let goldSponsorsSection;
+	// let goldSponsorsSection;
 
 	let silverSponsorsSection;
 	if (silverSponsors.length > 0) {
