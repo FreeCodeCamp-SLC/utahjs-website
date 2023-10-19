@@ -70,50 +70,50 @@ const metaData = {
 					title: `Open Graph Image Height`,
 					type: `number`,
 				},
+			],
+		},
+		{
+			name: `twitter`,
+			title: `Twitter`,
+			type: `object`,
+			fields: [
 				{
-					name: `twitter`,
-					title: `Twitter`,
-					type: `object`,
-					fields: [
-						{
-							name: `card`,
-							title: `Twitter Card Size`,
-							type: `string`,
-							options: {
-								list: [
-									{ title: `Summary`, value: `summary` },
-									{ title: `Summary Large Image`, value: `summary_large_image` },
-									{ title: `App`, value: `app` },
-									{ title: `Player`, value: `player` },
-								],
-							},
-						},
-						{
-							name: `title`,
-							title: `Title`,
-							type: `string`,
-						},
-						{
-							name: `creator`,
-							title: `Creator`,
-							type: `string`,
-						},
-						{
-							name: `twitterImage`,
-							title: `Twitter Image`,
-							type: `image`,
-						},
-						{
-							name: `twitterImageWidth`,
-							title: `Open Graph Image Width`,
-							type: `number`,
-						},
-						{
-							name: `twitterImageHeight`,
-							title: `Open Graph Image Height`,
-							type: `number`,
-						},
-					],
+					name: `card`,
+					title: `Twitter Card Size`,
+					type: `string`,
+					options: {
+						list: [
+							{ title: `Summary`, value: `summary` },
+							{ title: `Summary Large Image`, value: `summary_large_image` },
+							{ title: `App`, value: `app` },
+							{ title: `Player`, value: `player` },
+						],
+					},
+				},
+				{
+					name: `title`,
+					title: `Title`,
+					type: `string`,
+				},
+				{
+					name: `creator`,
+					title: `Creator`,
+					type: `string`,
+				},
+				{
+					name: `twitterImage`,
+					title: `Twitter Image`,
+					type: `image`,
+				},
+				{
+					name: `twitterImageWidth`,
+					title: `Open Graph Image Width`,
+					type: `number`,
+				},
+				{
+					name: `twitterImageHeight`,
+					title: `Open Graph Image Height`,
+					type: `number`,
 				},
 			],
 		},
