@@ -63,7 +63,7 @@ export async function getHomeData(): Promise<Home> {
 		_id,
 		_createdAt,
 		_updatedAt,
-		"metaData": metaData->{
+		metaData->{
           ...,
           openGraph {
             ...,
