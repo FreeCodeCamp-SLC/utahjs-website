@@ -59,10 +59,21 @@ export async function getFooterData(): Promise<Footer> {
 }
 
 export async function getHomeData(): Promise<Home> {
-	return createClient(clientConfig).fetch(groq`*[_type == "home"][0]{
+	return createClient(clientConfig).fetch(groq`*[_type == "homePage"][0]{
 		_id,
 		_createdAt,
 		_updatedAt,
+		"metaData": metaData->{
+          ...,
+          openGraph {
+            ...,
+            "ogImageUrl": ogImage.asset->url,
+          },
+          twitter {
+            ...,
+            "twitterImageUrl": twitterImage.asset->url,
+          },
+        },
 		"pageTitle": page_title,
 		"heroSection": {
 			"heroBackgroundImageUrl": hero_section.hero_background_image.asset->url,
