@@ -65,17 +65,6 @@ const conference = {
 				},
 			],
 		},
-
-		{
-			name: `fallbackMessage`,
-			title: `Fallback Message`,
-			type: `array`,
-			of: [
-				{
-					type: `block`,
-				},
-			],
-		},
 	],
 	preview: {
 		select: {

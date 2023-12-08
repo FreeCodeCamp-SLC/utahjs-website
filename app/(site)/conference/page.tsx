@@ -1,17 +1,12 @@
-'use client';
-
 import { PortableText } from '@portabletext/react';
+import { createClient } from '@sanity/client';
 import { getConferenceData, getConferenceFallbackMessage, getConferenceSponsors } from '@/sanity/sanityFetch-utils';
 import styles from './conference.module.scss';
 import Image from 'next/image';
+import { useNextSanityImage } from 'next-sanity-image';
 import clientConfig from '@/sanity/config/client-config';
-import imageUrlBuilder from '@sanity/image-url';
 
-const builder = imageUrlBuilder(clientConfig);
-
-function urlFor(source) {
-	return builder.image(source);
-}
+const configuredSanityClient = createClient(clientConfig);
 
 export async function generateMetadata() {
 	return {
@@ -28,13 +23,22 @@ export default async function Conference() {
 	// const todaysDate = new Date();
 	// console.log('todaysDate:');
 	// console.log(todaysDate);
-	console.log('sponsorSection:');
-	console.log(sponsorSection);
-	const platinumSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'platinum');
+	// console.log('sponsorSection:');
+	// console.log(sponsorSection);
 
-	const goldSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'gold');
+	console.log('configuredSanityClient');
+	console.log(configuredSanityClient);
+	console.log('conferenceData.heroSection.backgroundImage');
+	console.log(conferenceData.heroSection.backgroundImage);
 
-	const silverSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'silver');
+	// const imageProps = useNextSanityImage(configuredSanityClient, conferenceData.heroSection.backgroundImage);
+	// console.log('imageProps');
+	// console.log(imageProps);
+	// const platinumSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'platinum');
+
+	// const goldSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'gold');
+
+	// const silverSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'silver');
 
 	const bronzeSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'bronze');
 
@@ -49,33 +53,50 @@ export default async function Conference() {
 	// 	);
 	// }
 	// let goldSponsorsSection;
+	// if (goldSponsors.length > 0) {
+	// 	goldSponsorsSection = (
+	// 		<div className="gold-sponsors">
+	// 			<h3>Gold Sponsors</h3>
+	// 			<ul>
+	// 				{goldSponsors.map((sponsor) => {
+	// 					<li key={sponsor.key}>
+	// 						<Image src={sponsor.sponsorImage.asset.url} />
+	// 					</li>;
+	// 				})}
+	// 			</ul>
+	// 		</div>
+	// 	);
+	// }
 
-	let silverSponsorsSection;
-	if (silverSponsors.length > 0) {
-		silverSponsorsSection = (
-			<div className="silver-sponsors">
-				<h3>Silver Sponsors</h3>
-				<ul>
-					{silverSponsors.map((sponsor) => (
-						<li key={sponsor._key}>
-							<Image src={sponsor.sponsorImage.asset.url} alt={sponsor.sponsorImage.alt} />
-						</li>
-					))}
-				</ul>
-			</div>
-		);
-	}
+	// let silverSponsorsSection;
+	// if (silverSponsors.length > 0) {
+	// 	silverSponsorsSection = (
+	// 		<div className="silver-sponsors">
+	// 			<h3>Silver Sponsors</h3>
+	// 			<ul>
+	// 				{silverSponsors.map((sponsor) => (
+	// 					<li key={sponsor._key}>
+	// 						<Image src={sponsor.sponsorImage.asset.url} alt={sponsor.sponsorImage.alt} />
+	// 					</li>
+	// 				))}
+	// 			</ul>
+	// 		</div>
+	// 	);
+	// }
 	let bronzeSponsorsSection;
 	if (bronzeSponsors.length > 0) {
 		bronzeSponsorsSection = (
 			<div className="bronze-sponsors">
 				<h3>Bronze Sponsors</h3>
 				<ul>
-					{bronzeSponsors.map((sponsor) => (
-						<li key={sponsor._key}>
-							<Image src={urlFor(sponsor.sponsorImage.asset.url)} alt={sponsor.sponsorImage.alt} />
-						</li>
-					))}
+					{bronzeSponsors.map((sponsor) => {
+						const imageProps = useNextSanityImage(configuredSanityClient, sponsor.sponsorImage);
+						return (
+							<li key={sponsor._key}>
+								{/* <Image src={urlFor(sponsor.sponsorImage).url()} alt={sponsor.sponsorImage.alt} width={500} height={500} /> */}
+							</li>
+						);
+					})}
 				</ul>
 			</div>
 		);
@@ -116,9 +137,6 @@ export default async function Conference() {
 				</div>
 				<div className="sponsors-column">
 					<h2>{sponsorSection.title}</h2>
-					{platinumSponsors}
-					{goldSponsors}
-					{silverSponsorsSection}
 					{bronzeSponsorsSection}
 				</div>
 			</section>
