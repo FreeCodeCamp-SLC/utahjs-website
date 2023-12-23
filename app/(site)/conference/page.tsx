@@ -14,8 +14,24 @@ function urlFor(source) {
 }
 
 export async function generateMetadata() {
+	const conferenceData = await getConferenceData();
 	return {
-		title: `UtahJS | Conference`,
+		title: conferenceData.heroSection.heroHeader,
+		description: conferenceData.heroSection.subtitle,
+		openGraph: {
+			title: conferenceData.heroSection.heroHeader,
+			description: conferenceData.heroSection.subtitle,
+			url: `https://utahjs.com/`,
+			type: 'website',
+			siteName: 'UtahJS',
+			images: conferenceData.heroSection?.heroImage || '/logo.png',
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title: conferenceData.heroSection.heroHeader,
+			creator: '@utjs',
+			images: conferenceData.heroSection?.heroImage || '/logo.png',
+		},
 	};
 }
 

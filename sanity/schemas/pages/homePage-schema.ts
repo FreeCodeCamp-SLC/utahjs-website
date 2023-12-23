@@ -13,6 +13,12 @@ const homePage = {
 	type: `document`,
 	fields: [
 		{
+			name: `metaData`,
+			title: `Metadata`,
+			type: `reference`,
+			to: [{ type: `metaData` }],
+		},
+		{
 			name: `pageTitle`,
 			title: `Page Title`,
 			type: `string`,
