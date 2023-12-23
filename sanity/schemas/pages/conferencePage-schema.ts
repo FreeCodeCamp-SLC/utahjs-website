@@ -4,6 +4,12 @@ const conferencePage = {
 	type: `document`,
 	fields: [
 		{
+			name: `metaData`,
+			title: `Metadata`,
+			type: `reference`,
+			to: [{ type: `metaData` }],
+		},
+		{
 			name: `pageTitle`,
 			title: `Page Title`,
 			type: `string`,
@@ -67,7 +73,7 @@ const conferencePage = {
 							name: `url`,
 							title: `URL`,
 							type: `url`,
-							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => unknown }) =>
 								rule.uri({
 									allowRelative: true,
 									scheme: [`http`, `https`, `mailto`, `tel`],
@@ -94,7 +100,7 @@ const conferencePage = {
 							name: `url`,
 							title: `URL`,
 							type: `url`,
-							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+							validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => unknown }) =>
 								rule.uri({
 									allowRelative: true,
 									scheme: [`http`, `https`, `mailto`, `tel`],
