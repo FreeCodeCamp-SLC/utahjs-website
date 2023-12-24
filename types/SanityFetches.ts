@@ -12,6 +12,33 @@ export type Conference = {
 	_createdAt: Date;
 	_updatedAt: Date;
 	pageTitle: string;
+	metaData: {
+		_id: string;
+		_type: string;
+		_createdAt: Date;
+		_updatedAt: Date;
+		_rev: string;
+		description: string;
+		title: string;
+		openGraph: {
+			description: string;
+			ogImageUrl: string;
+			ogImageHeight: number;
+			ogImageWidth: number;
+			siteName: string;
+			title: string;
+			type: string;
+			url: string;
+		};
+		twitter: {
+			card: string;
+			creator: string;
+			title: string;
+			twitterImageUrl: string;
+			twitterImageHeight: number;
+			twitterImageWidth: number;
+		};
+	};
 	heroSection: {
 		backgroundImage: string;
 		heroImage: string;
