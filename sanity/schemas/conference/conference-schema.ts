@@ -21,12 +21,7 @@ const conference = {
 			title: `Location`,
 			type: `string`,
 		},
-		{
-			name: `featuredSpeakers`,
-			title: `Featured Speakers`,
-			type: `array`,
-			of: [featuredSpeakers],
-		},
+
 		{
 			name: `speakersUrl`,
 			title: `Speakers URL`,
@@ -48,6 +43,24 @@ const conference = {
 				}),
 		},
 		{
+			name: `featuredSpeakersSection`,
+			title: `Featured Speakers Section`,
+			type: `object`,
+			fields: [
+				{
+					name: `featuredSpeakersSectionTitle`,
+					title: `Featured Speakers Section Title`,
+					type: `string`,
+				},
+				{
+					name: `featuredSpeakers`,
+					title: `Featured Speakers`,
+					type: `array`,
+					of: [featuredSpeakers],
+				},
+			],
+		},
+		{
 			name: `sponsorSection`,
 			title: `Sponsor Section`,
 			type: `object`,
@@ -65,10 +78,29 @@ const conference = {
 				},
 			],
 		},
-
 		{
-			name: `fallbackMessage`,
-			title: `Fallback Message`,
+			name: `conferenceMessage`,
+			title: `Conference Message`,
+			type: `array`,
+			of: [
+				{
+					type: `block`,
+				},
+			],
+		},
+		{
+			name: `afterConferenceMessage`,
+			title: `After Conference Message`,
+			type: `array`,
+			of: [
+				{
+					type: `block`,
+				},
+			],
+		},
+		{
+			name: `newYearMessage`,
+			title: `New Year Message`,
 			type: `array`,
 			of: [
 				{

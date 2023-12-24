@@ -1,5 +1,4 @@
 import envConfig from '../../env-config';
-import { ImageUrlBuilder } from 'sanity';
 
 const { SANITY_PROJECT_ID, SANITY_DATASET } = envConfig;
 
@@ -8,7 +7,5 @@ const clientConfig = {
 	dataset: SANITY_DATASET,
 	apiVersion: `2023-06-22`,
 };
-
-// export imageBuilder = ImageUrlBuilder(clientConfig);
 
 export default clientConfig;

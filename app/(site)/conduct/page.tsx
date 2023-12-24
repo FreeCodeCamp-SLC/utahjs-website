@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import { getConductData } from '@/sanity/sanityFetch-utils';
+import { getConductData } from '@/utils/sanityFetch-utils';
 import styles from './conduct.module.scss';
 
 export async function generateMetadata() {

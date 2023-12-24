@@ -1,20 +1,10 @@
-'use client';
-
 import { PortableText } from '@portabletext/react';
-import { getConferenceData, getConferenceFallbackMessage, getConferenceSponsors } from '@/sanity/sanityFetch-utils';
+import { getConferencePageData, getConferenceData } from '@/utils/sanityFetch-utils';
+import { generateFeaturedSpeakersSection, generateSponsorSection } from '@/utils/helperFunctions';
 import styles from './conference.module.scss';
-import Image from 'next/image';
-import clientConfig from '@/sanity/config/client-config';
-import imageUrlBuilder from '@sanity/image-url';
-
-const builder = imageUrlBuilder(clientConfig);
-
-function urlFor(source) {
-	return builder.image(source);
-}
 
 export async function generateMetadata() {
-	const conferenceData = await getConferenceData();
+	const conferenceData = await getConferencePageData();
 	return {
 		title: conferenceData.heroSection.heroHeader,
 		description: conferenceData.heroSection.subtitle,
@@ -36,70 +26,33 @@ export async function generateMetadata() {
 }
 
 export default async function Conference() {
+	const conferencePageData = await getConferencePageData();
 	const conferenceData = await getConferenceData();
-	// console.log('conferenceData:');
-	// console.log(conferenceData);
-	// const conferenceFallbackMessage = await getConferenceFallbackMessage();
-	const sponsorSection = await getConferenceSponsors();
-	// const todaysDate = new Date();
-	// console.log('todaysDate:');
-	// console.log(todaysDate);
-	console.log('sponsorSection:');
-	console.log(sponsorSection);
-	const platinumSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'platinum');
 
-	const goldSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'gold');
-
-	const silverSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'silver');
-
-	const bronzeSponsors = sponsorSection.sponsors.filter((sponsor) => sponsor.sponsorLevel === 'bronze');
-
-	// console.log('conferenceFallbackMessage:');
-	// console.log(conferenceFallbackMessage);
-	// if (!conferenceData) {
-	// 	return (
-	// 		<div className={styles.container}>
-	// 			<h1>Conference Page</h1>
-	// 			<p>No Data</p>
-	// 		</div>
-	// 	);
-	// }
-	// let goldSponsorsSection;
-
-	let silverSponsorsSection;
-	if (silverSponsors.length > 0) {
-		silverSponsorsSection = (
-			<div className="silver-sponsors">
-				<h3>Silver Sponsors</h3>
-				<ul>
-					{silverSponsors.map((sponsor) => (
-						<li key={sponsor._key}>
-							<Image src={sponsor.sponsorImage.asset.url} alt={sponsor.sponsorImage.alt} />
-						</li>
-					))}
-				</ul>
-			</div>
-		);
-	}
-	let bronzeSponsorsSection;
-	if (bronzeSponsors.length > 0) {
-		bronzeSponsorsSection = (
-			<div className="bronze-sponsors">
-				<h3>Bronze Sponsors</h3>
-				<ul>
-					{bronzeSponsors.map((sponsor) => (
-						<li key={sponsor._key}>
-							<Image src={urlFor(sponsor.sponsorImage.asset.url)} alt={sponsor.sponsorImage.alt} />
-						</li>
-					))}
-				</ul>
-			</div>
-		);
-	}
-
-	const heroSection = conferenceData.heroSection;
+	// Hero Section
+	const heroSection = conferencePageData.heroSection;
 	const primaryButton = heroSection.primaryButton;
 	const secondaryButton = heroSection.secondaryButton;
+
+	// Conference Message
+	let conferenceMessage;
+	const currentDate = new Date();
+	const conferenceDate = new Date(conferenceData.date);
+
+	if (currentDate < conferenceDate) {
+		conferenceMessage = <PortableText value={conferenceData.conferenceMessage} />;
+	} else if (currentDate.getFullYear() === conferenceDate.getFullYear()) {
+		conferenceMessage = <PortableText value={conferenceData.afterConferenceMessage} />;
+	} else {
+		conferenceMessage = <PortableText value={conferenceData.newYearMessage} />;
+	}
+
+	const featuredSpeakersSection = generateFeaturedSpeakersSection(
+		conferenceData.featuredSpeakersSectionTitle,
+		conferenceData.featuredSpeakers,
+	);
+
+	const sponsorsSection = generateSponsorSection(conferenceData.sponsorSectionTitle, conferenceData.sponsors);
 
 	return (
 		<div className={styles.container}>
@@ -127,15 +80,10 @@ export default async function Conference() {
 				</div>
 			</section>
 			<section className={styles.conference_info}>
-				<div className="conference-message-column">
-					<PortableText value={conferenceData.bodyContent} />
-				</div>
-				<div className="sponsors-column">
-					<h2>{sponsorSection.title}</h2>
-					{platinumSponsors}
-					{goldSponsors}
-					{silverSponsorsSection}
-					{bronzeSponsorsSection}
+				{conferenceMessage}
+				<div className={styles.row}>
+					{featuredSpeakersSection}
+					{sponsorsSection}
 				</div>
 			</section>
 		</div>

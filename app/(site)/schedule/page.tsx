@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getConferenceScheduleData } from '@/sanity/sanityFetch-utils';
+import { getConferenceScheduleData } from '@/utils/sanityFetch-utils';
 import { ConferenceScheduleUrl } from '@/types/SanityFetches';
 import styles from './schedule.module.scss';
 

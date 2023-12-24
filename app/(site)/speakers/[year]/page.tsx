@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { getPastSpeakersData } from '@/sanity/sanityFetch-utils';
+import { getPastSpeakersData } from '@/utils/sanityFetch-utils';
 import styles from '../speakers.module.scss';
 import Image from 'next/image';
-import { Speaker } from '@/types/speaker';
+import { Speaker } from '@/types/types';
 import { getData } from '@/utils/fetch';
 
 export async function generateMetadata({ params }: { params: { year: string } }) {
