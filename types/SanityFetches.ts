@@ -1,13 +1,13 @@
 import { PortableTextBlock } from 'sanity';
 
-export type CodeOfConduct = {
+export type CodeOfConductPageData = {
 	_id: string;
 	_createdAt: Date;
 	_updatedAt: Date;
 	content: PortableTextBlock[];
 };
 
-export type Conference = {
+export type ConferencePageData = {
 	_id: string;
 	_createdAt: Date;
 	_updatedAt: Date;
@@ -56,12 +56,44 @@ export type Conference = {
 		};
 	};
 	bodyContent: PortableTextBlock[];
+	fallbackMessage: PortableTextBlock[];
 };
 
 export type ConferenceScheduleUrl = {
 	_id: string;
 	date: Date;
 	scheduleUrl: string;
+};
+
+export type ConferenceData = {
+	_id: string;
+	date: Date;
+	featuredSpeakersSectionTitle: string;
+	featuredSpeakers: [
+		{
+			_key: string;
+			name: string;
+			role: string;
+			presentation: string;
+			description: string;
+			dateTime: string;
+			duration: string;
+			image: string;
+		},
+	];
+	sponsorSectionTitle: string;
+	sponsors: [
+		{
+			_key: string;
+			name: string;
+			sponsorLevel: string;
+			sponsorURL: string;
+			sponsorImage: string;
+		},
+	];
+	conferenceMessage: PortableTextBlock[];
+	afterConferenceMessage: PortableTextBlock[];
+	newYearMessage: PortableTextBlock[];
 };
 
 export type Footer = {
@@ -71,7 +103,7 @@ export type Footer = {
 	content: PortableTextBlock[];
 };
 
-export type Home = {
+export type HomePageData = {
 	_id: string;
 	_createdAt: Date;
 	_updatedAt: Date;

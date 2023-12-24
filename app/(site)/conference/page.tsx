@@ -1,9 +1,10 @@
 import { PortableText } from '@portabletext/react';
-import { getConferenceData } from '@/sanity/sanityFetch-utils';
+import { getConferencePageData, getConferenceData } from '@/utils/sanityFetch-utils';
+import { generateFeaturedSpeakersSection, generateSponsorSection } from '@/utils/helperFunctions';
 import styles from './conference.module.scss';
 
 export async function generateMetadata() {
-	const conferenceData = await getConferenceData();
+	const conferenceData = await getConferencePageData();
 	return {
 		title: conferenceData.metaData.title,
 		description: conferenceData.metaData.description,
@@ -25,18 +26,33 @@ export async function generateMetadata() {
 }
 
 export default async function Conference() {
+	const conferencePageData = await getConferencePageData();
 	const conferenceData = await getConferenceData();
-	if (!conferenceData) {
-		return (
-			<div className={styles.container}>
-				<h1>Conference Page</h1>
-				<p>No Data</p>
-			</div>
-		);
-	}
-	const heroSection = conferenceData.heroSection;
+
+	// Hero Section
+	const heroSection = conferencePageData.heroSection;
 	const primaryButton = heroSection.primaryButton;
 	const secondaryButton = heroSection.secondaryButton;
+
+	// Conference Message
+	let conferenceMessage;
+	const currentDate = new Date();
+	const conferenceDate = new Date(conferenceData.date);
+
+	if (currentDate < conferenceDate) {
+		conferenceMessage = <PortableText value={conferenceData.conferenceMessage} />;
+	} else if (currentDate.getFullYear() === conferenceDate.getFullYear()) {
+		conferenceMessage = <PortableText value={conferenceData.afterConferenceMessage} />;
+	} else {
+		conferenceMessage = <PortableText value={conferenceData.newYearMessage} />;
+	}
+
+	const featuredSpeakersSection = generateFeaturedSpeakersSection(
+		conferenceData.featuredSpeakersSectionTitle,
+		conferenceData.featuredSpeakers,
+	);
+
+	const sponsorsSection = generateSponsorSection(conferenceData.sponsorSectionTitle, conferenceData.sponsors);
 
 	return (
 		<div className={styles.container}>
@@ -64,7 +80,11 @@ export default async function Conference() {
 				</div>
 			</section>
 			<section className={styles.conference_info}>
-				<PortableText value={conferenceData.bodyContent} />
+				{conferenceMessage}
+				<div className={styles.row}>
+					{featuredSpeakersSection}
+					{sponsorsSection}
+				</div>
 			</section>
 		</div>
 	);

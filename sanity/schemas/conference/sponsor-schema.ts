@@ -9,8 +9,8 @@ const sponsors = {
 			type: `string`,
 		},
 		{
-			name: `sponsor`,
-			title: `Sponsor`,
+			name: `sponsorImage`,
+			title: `Sponsor Image`,
 			type: `image`,
 			fields: [
 				{
@@ -27,6 +27,19 @@ const sponsors = {
 			name: `sponsorUrl`,
 			title: `sponsor url`,
 			type: `url`,
+		},
+		{
+			name: `sponsorLevel`,
+			title: `Sponsor Level`,
+			type: `string`,
+			options: {
+				list: [
+					{ title: `Platinum`, value: `platinum` },
+					{ title: `Gold`, value: `gold` },
+					{ title: `Silver`, value: `silver` },
+					{ title: `Bronze`, value: `bronze` },
+				],
+			},
 		},
 	],
 };

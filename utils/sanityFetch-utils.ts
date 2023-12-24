@@ -1,16 +1,17 @@
 import { createClient, groq } from 'next-sanity';
-import clientConfig from './config/client-config';
+import clientConfig from '../sanity/config/client-config';
 import {
-	CodeOfConduct,
-	Conference,
+	CodeOfConductPageData,
+	ConferencePageData,
 	ConferenceScheduleUrl,
+	ConferenceData,
 	Footer,
-	Home,
+	HomePageData,
 	Navigation,
 	PastSpeakers,
 } from '@/types/SanityFetches';
 
-export async function getConductData(): Promise<CodeOfConduct> {
+export async function getConductData(): Promise<CodeOfConductPageData> {
 	return createClient(clientConfig).fetch(groq`*[_type == "codeOfConduct"][0]{
 		_id,
 		_createdAt,
@@ -19,7 +20,7 @@ export async function getConductData(): Promise<CodeOfConduct> {
 	}`);
 }
 
-export async function getConferenceData(): Promise<Conference> {
+export async function getConferencePageData(): Promise<ConferencePageData> {
 	return createClient(clientConfig).fetch(groq`*[_type == "conferencePage"][0]{
 		metaData->{
 			...,
@@ -48,8 +49,38 @@ export async function getConferenceData(): Promise<Conference> {
 				"newTab": heroSection.secondaryButton.newTab
 			}
 		},
-		bodyContent
+		bodyContent,
+		fallbackMessage
 	}`);
+}
+
+export async function getConferenceData(): Promise<ConferenceData> {
+	return createClient(clientConfig).fetch(groq`*[_type == "conference"] {
+		_id,
+		date,
+		"featuredSpeakersSectionTitle": featuredSpeakersSection.featuredSpeakersSectionTitle,
+		"featuredSpeakers": featuredSpeakersSection.featuredSpeakers[]{
+			_key,
+			name,
+			role,
+			presentation,
+			description,
+			dateTime,
+			duration,
+            "image": image.asset->url
+		},
+		"sponsorSectionTitle": sponsorSection.sponsorSectionTitle,
+		"sponsors": sponsorSection.sponsors[]{
+			_key,
+			name,
+			sponsorLevel,
+			sponsorUrl,
+			"sponsorImage": sponsorImage.asset->url
+		},
+		conferenceMessage,
+		afterConferenceMessage,
+		newYearMessage
+	} | order(date desc)[0]`);
 }
 
 export async function getConferenceScheduleData(): Promise<ConferenceScheduleUrl> {
@@ -69,7 +100,7 @@ export async function getFooterData(): Promise<Footer> {
 	}`);
 }
 
-export async function getHomeData(): Promise<Home> {
+export async function getHomePageData(): Promise<HomePageData> {
 	return createClient(clientConfig).fetch(groq`*[_type == "homePage"][0]{
 		_id,
 		_createdAt,

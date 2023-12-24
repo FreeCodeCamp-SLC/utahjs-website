@@ -115,16 +115,6 @@ const conferencePage = {
 				},
 			],
 		},
-		{
-			name: `bodyContent`,
-			title: `Body Content`,
-			type: `array`,
-			of: [
-				{
-					type: `block`,
-				},
-			],
-		},
 	],
 };
 

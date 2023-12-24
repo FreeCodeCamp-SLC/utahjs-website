@@ -64,8 +64,27 @@
 	}
 	.conference_info {
 		margin-top: 2rem;
+		.row {
+			display: flex;
+			gap: 2rem;
+			justify-content: space-between;
+			margin-bottom: 2rem;
+			@media (max-width: 900px) {
+				flex-direction: column;
+			}
+		}
 		p {
 			margin-bottom: 1rem;
+		}
+		ul {
+			padding: 0;
+		}
+		li {
+			list-style: none;
+			max-width: 200px;
+			img {
+				object-fit: contain;
+			}
 		}
 	}
 }
