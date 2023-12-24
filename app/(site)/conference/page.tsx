@@ -6,21 +6,21 @@ import styles from './conference.module.scss';
 export async function generateMetadata() {
 	const conferenceData = await getConferencePageData();
 	return {
-		title: conferenceData.heroSection.heroHeader,
-		description: conferenceData.heroSection.subtitle,
+		title: conferenceData.metaData.title,
+		description: conferenceData.metaData.description,
 		openGraph: {
-			title: conferenceData.heroSection.heroHeader,
-			description: conferenceData.heroSection.subtitle,
-			url: `https://utahjs.com/`,
-			type: 'website',
-			siteName: 'UtahJS',
-			images: conferenceData.heroSection?.heroImage || '/logo.png',
+			title: conferenceData.metaData.openGraph.title,
+			description: conferenceData.metaData.openGraph.description,
+			url: conferenceData.metaData.openGraph.url,
+			type: conferenceData.metaData.openGraph.type,
+			siteName: conferenceData.metaData.openGraph.siteName,
+			images: conferenceData.metaData.openGraph.ogImageUrl || '/logo.png',
 		},
 		twitter: {
-			card: 'summary_large_image',
-			title: conferenceData.heroSection.heroHeader,
-			creator: '@utjs',
-			images: conferenceData.heroSection?.heroImage || '/logo.png',
+			card: conferenceData.metaData.twitter.card,
+			title: conferenceData.metaData.twitter.title,
+			creator: conferenceData.metaData.twitter.creator,
+			images: conferenceData.metaData.twitter.twitterImageUrl || '/logo.png',
 		},
 	};
 }

@@ -22,6 +22,17 @@ export async function getConductData(): Promise<CodeOfConductPageData> {
 
 export async function getConferencePageData(): Promise<ConferencePageData> {
 	return createClient(clientConfig).fetch(groq`*[_type == "conferencePage"][0]{
+		metaData->{
+			...,
+			openGraph {
+				...,
+				"ogImageUrl": ogImage.asset->url,
+			},
+			twitter {
+				...,
+				"twitterImageUrl": twitterImage.asset->url,
+			},
+		},
 		"heroSection": {
 			"backgroundImage": heroSection.backgroundImage.asset->url,
 			"heroImage": heroSection.heroImage.asset->url,
