@@ -1,3 +1,4 @@
+@import '@/app/styles/variables';
 @import '@/app/styles/mixins';
 
 .container {
@@ -26,7 +27,7 @@
 			}
 			&:active,
 			&.active {
-				color: #000;
+				color: $black;
 				font-weight: bold;
 			}
 		}

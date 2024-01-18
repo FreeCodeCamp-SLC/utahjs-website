@@ -162,16 +162,23 @@ export type HomePageData = {
 	homePageFooter: PortableTextBlock[];
 };
 
-export type Navigation = {
-	_id: string;
-	_createdAt: Date;
-	_updatedAt: Date;
+export type MenuLink = {
+	_key: string;
 	title: string;
-	slug: {
-		current: string;
-	};
+	slug: string;
 	openInNewTab: boolean;
-	order: number;
+	nestedLinks?: MenuLink[];
+};
+
+export type Menu = {
+	_key: string;
+	menuTitle: string;
+	headerLogo: {
+		url: string;
+		alt: string;
+	};
+	headerTitle: string;
+	links: MenuLink[];
 };
 
 export type PastSpeakers = {
