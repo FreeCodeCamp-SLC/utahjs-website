@@ -7,12 +7,12 @@ import {
 	ConferenceData,
 	Footer,
 	HomePageData,
-	Navigation,
 	PastSpeakers,
+	Menu,
 } from '@/types/SanityFetches';
 
 export async function getConductData(): Promise<CodeOfConductPageData> {
-	return createClient(clientConfig).fetch(groq`*[_type == "codeOfConduct"][0]{
+	return createClient(clientConfig).fetch(groq`*[_type == "codeOfConductPage"][0]{
 		_id,
 		_createdAt,
 		_updatedAt,
@@ -146,16 +146,28 @@ export async function getHomePageData(): Promise<HomePageData> {
 	}`);
 }
 
-export async function getNavigationData(): Promise<Navigation[]> {
-	return createClient(clientConfig).fetch(groq`*[_type == "navigation"] {
-		_id,
-		_createdAt,
-		_updatedAt,
-		title,
-		slug,
-		openInNewTab,
-		order
-	} | order(order asc)`);
+export async function getPrimaryMenuData(): Promise<Menu> {
+	return createClient(clientConfig).fetch(groq`*[_type == "menu" && menuTitle == 'Primary Menu'][0] {
+		menuTitle,
+		"headerLogo": {
+			"url": headerLogo.asset->url,
+			"alt": headerLogo.alt
+		},
+		headerTitle,
+		"links": links[]{
+			_key,
+			title,
+			"slug": slug.current,
+			openInNewTab,
+			"nestedLinks": nestedLinks[]{
+				_key,
+				title,
+				"slug": slug.current,
+				openInNewTab
+			},
+		}
+	}
+	`);
 }
 
 export async function getPastSpeakersData(): Promise<PastSpeakers[]> {

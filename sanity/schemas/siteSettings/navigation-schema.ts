@@ -1,51 +1,96 @@
-const navigation = {
-	name: `navigation`,
-	title: `Navigation`,
+const menu = {
+	name: `menu`,
+	title: `Menu`,
 	type: `document`,
 	fields: [
 		{
-			name: `title`,
-			title: `Title`,
+			name: `menuTitle`,
+			title: `Menu Title`,
 			type: `string`,
 		},
 		{
-			name: `slug`,
-			title: `Slug`,
-			type: `slug`,
-			options: {
-				source: `title`,
-			},
-		},
-		{
-			name: `openInNewTab`,
-			title: `Open in new tab`,
-			type: `boolean`,
-		},
-		{
-			name: `order`,
-			title: `Order`,
-			type: `number`,
-			description: `This will determine the order the links appear in the navbar`,
-		},
-	],
-	preview: {
-		select: {
-			title: `title`,
-			subtitle: `order`,
-		},
-	},
-	orderings: [
-		{
-			name: `orderAsc`,
-			title: `Order Ascending`,
-			by: [
+			name: `headerLogo`,
+			title: `Header Logo`,
+			type: `image`,
+			fields: [
 				{
-					field: `order`,
-					direction: `asc`,
+					name: `alt`,
+					title: `Alt Text`,
+					type: `string`,
+				},
+			],
+		},
+		{
+			name: `headerTitle`,
+			title: `Header Title`,
+			type: `string`,
+		},
+		{
+			name: `links`,
+			title: `Links`,
+			type: `array`,
+			of: [
+				{
+					type: `object`,
+					fields: [
+						{
+							name: `title`,
+							title: `Title`,
+							type: `string`,
+						},
+						{
+							name: `slug`,
+							title: `Slug`,
+							type: `slug`,
+							options: {
+								source: `title`,
+							},
+						},
+						{
+							name: `openInNewTab`,
+							title: `Open in new tab`,
+							type: `boolean`,
+						},
+						{
+							name: `nestedLinks`,
+							title: `Nested Links`,
+							type: `array`,
+							of: [
+								{
+									type: `object`,
+									fields: [
+										{
+											name: `title`,
+											title: `Title`,
+											type: `string`,
+										},
+										{
+											name: `slug`,
+											title: `Slug`,
+											type: `slug`,
+											options: {
+												source: `title`,
+											},
+										},
+										{
+											name: `openInNewTab`,
+											title: `Open in new tab`,
+											type: `boolean`,
+										},
+									],
+								},
+							],
+						},
+					],
 				},
 			],
 		},
 	],
+	preview: {
+		select: {
+			title: `menuTitle`,
+		},
+	},
 };
 
-export default navigation;
+export default menu;

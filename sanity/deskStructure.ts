@@ -15,7 +15,7 @@ export const myStructure = (S: any) =>
 						.items([
 							// I have two singleton documents, and one document list in this group.
 							S.listItem().title(`Metadata`).child(S.document().schemaType(`metaData`).documentId(`metaData`)),
-							S.documentTypeListItem(`navigation`).title(`Main Navigation`),
+							S.documentTypeListItem(`menu`).title(`Menus`),
 							S.listItem().title(`Footer`).child(S.document().schemaType(`footer`).documentId(`footer`)),
 						]),
 				),

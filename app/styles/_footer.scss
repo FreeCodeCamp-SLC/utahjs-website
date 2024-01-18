@@ -1,12 +1,14 @@
-@import '../../styles/mixins';
+@import '@/app/styles/variables';
+@import '@/app/styles/mixins';
 
 .footer {
-	background-color: rgb(0, 0, 0);
+	background-color: $black;
 	padding: 1rem 2rem;
 	width: 100%;
 	p,
 	a {
-		color: #fff;
+		color: $white;
+		margin: 0;
 	}
 	a {
 		text-decoration: none;
