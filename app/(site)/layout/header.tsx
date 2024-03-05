@@ -2,20 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPrimaryMenuData } from '@/utils/sanityFetch-utils';
+import { getHeaderData, getPrimaryMenuData } from '@/utils/sanityFetch-utils';
+import { getImageDimensions } from '@/utils/helperFunctions';
 
 export default async function Header() {
+	const headerData = await getHeaderData();
 	const primaryMenuData = await getPrimaryMenuData();
-
-	const headerLogo = primaryMenuData.headerLogo;
-	const match = headerLogo.url.match(/-(\d+)x(\d+)\./);
-
-	let logoWidth = 0;
-	let logoHeight = 0;
-	if (match) {
-		logoWidth = Number(match[1]);
-		logoHeight = Number(match[2]);
-	}
+	const headerLogo = headerData.logo;
+	const headerLogoDimensions = getImageDimensions(headerLogo.url);
 
 	function handleHamburgerClick() {
 		const body = document.querySelector('body');
@@ -33,9 +27,16 @@ export default async function Header() {
 				<div className="container">
 					<div className="brand-container">
 						<Link href="/">
-							<Image src={headerLogo.url} alt={headerLogo.alt} width={logoWidth} height={logoHeight} />
+							<Image
+								src={headerLogo.url}
+								alt={headerLogo.alt}
+								width={headerLogoDimensions.width}
+								height={headerLogoDimensions.height}
+							/>
 						</Link>
-						<h1>{primaryMenuData.headerTitle}</h1>
+						<Link href="/">
+							<p>{headerData.title}</p>
+						</Link>
 					</div>
 					<button onClick={handleHamburgerClick}>
 						<div className="bar"></div>

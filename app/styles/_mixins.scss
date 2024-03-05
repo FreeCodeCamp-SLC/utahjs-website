@@ -16,8 +16,22 @@
 	}
 }
 
+@mixin button($backgroundColor: $yellow, $color: $black) {
+	background-color: $backgroundColor;
+	border-radius: 4px;
+	color: $color;
+	padding: 1rem;
+	text-decoration: none;
+	&:hover {
+		filter: brightness(1.2);
+	}
+	&:active {
+		filter: brightness(0.8);
+	}
+}
+
 @mixin container {
-	max-width: 1440px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 2rem;
 }

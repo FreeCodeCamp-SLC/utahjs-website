@@ -21,7 +21,7 @@
 	.hero_box {
 		background-color: rgba(22, 29, 14, 0.75);
 		border-radius: 1.2rem;
-		color: $white;
+		color: $whiteText;
 		margin-right: 15rem;
 		padding: 3.2rem;
 		h1 {
@@ -36,7 +36,7 @@
 		gap: 8px;
 		a {
 			border-radius: 1rem;
-			color: $white;
+			color: $whiteText;
 			padding: 1rem;
 			text-decoration: none;
 		}
@@ -57,7 +57,7 @@
 			}
 			&:active {
 				background-color: #545b62;
-				color: $white;
+				color: $whiteText;
 			}
 		}
 	}

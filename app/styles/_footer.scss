@@ -2,18 +2,52 @@
 @import '@/app/styles/mixins';
 
 .footer {
-	background-color: $black;
-	padding: 1rem 2rem;
+	background-color: $blackBackground;
+	padding: 6.4rem 2rem;
 	width: 100%;
 	p,
 	a {
-		color: $white;
+		color: $whiteText;
 		margin: 0;
 	}
 	a {
-		text-decoration: none;
+		text-decoration: underline;
 		&:hover {
-			text-decoration: underline;
+			color: $yellow;
 		}
+	}
+	img {
+		&:hover {
+			filter: brightness(0.8);
+		}
+		&:active {
+			filter: brightness(0.6);
+		}
+	}
+	.top-row {
+		align-items: center;
+		border-bottom: 2px solid #ccc;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-bottom: 4rem;
+		padding-bottom: 4rem;
+		& > a {
+			margin-bottom: 2rem;
+		}
+		.social-media-links {
+			display: flex;
+			gap: 2rem;
+			justify-content: center;
+			img {
+				height: auto;
+				max-width: 30px;
+			}
+		}
+	}
+	.organization {
+		border-bottom: 2px solid #ccc;
+		margin-bottom: 4rem;
+		padding-bottom: 4rem;
 	}
 }

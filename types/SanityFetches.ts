@@ -97,10 +97,31 @@ export type ConferenceData = {
 };
 
 export type Footer = {
-	_id: string;
-	_createdAt: Date;
-	_updatedAt: Date;
-	content: PortableTextBlock[];
+	logo: {
+		alt: string;
+		url: string;
+	};
+	socialMediaLinks: [
+		{
+			title: string;
+			logo: {
+				alt: string;
+				url: string;
+			};
+			url: string;
+			openInNewTab: boolean;
+		},
+	];
+	organizationDetails: PortableTextBlock[];
+	copyrightText: PortableTextBlock[];
+};
+
+export type Header = {
+	title: string;
+	logo: {
+		url: string;
+		alt: string;
+	};
 };
 
 export type HomePageData = {
@@ -109,21 +130,23 @@ export type HomePageData = {
 	_updatedAt: Date;
 	title: string;
 	heroSection: {
-		heroBackgroundImageUrl: string;
-		heroImageUrl: string;
-		heroHeader: string;
-		heroSubtext1: string;
-		heroSubtext2: string;
-		heroPrimaryButton: {
-			primaryButtonText: string;
-			primaryButtonLink: string;
-			primaryButtonNewTab: boolean;
+		backgroundImageUrl: string;
+		header: string;
+		primaryButton: {
+			text: string;
+			url: string;
+			newTab: boolean;
 		};
-		heroSecondaryButton: {
-			secondaryButtonText: string;
-			secondaryButtonLink: string;
-			secondaryButtonNewTab: boolean;
+		secondaryButton: {
+			text: string;
+			url: string;
+			newTab: boolean;
 		};
+	};
+	videoSection: {
+		sectionTitle: string;
+		paragraph: PortableTextBlock[];
+		youtubeShareLink: string;
 	};
 	getInvolvedSection: {
 		getInvolvedHeader: string;
@@ -149,13 +172,11 @@ export type HomePageData = {
 		otherMeetupsHeader: string;
 		otherMeetups: [
 			{
+				_key: string;
 				name: string;
 				url: string;
-				image: {
-					asset: {
-						url: string;
-					};
-				};
+				imageUrl: string;
+				imageAlt: string;
 			},
 		];
 	};
@@ -173,11 +194,6 @@ export type MenuLink = {
 export type Menu = {
 	_key: string;
 	menuTitle: string;
-	headerLogo: {
-		url: string;
-		alt: string;
-	};
-	headerTitle: string;
 	links: MenuLink[];
 };
 

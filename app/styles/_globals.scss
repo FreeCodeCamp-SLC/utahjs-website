@@ -64,6 +64,21 @@ textarea {
 	font-size: 1.6rem;
 }
 
+a {
+	color: $blueLink;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+	&:active {
+		color: $darkBlueLink;
+	}
+}
+
 main {
 	flex: 1;
+}
+
+.container {
+	@include container;
 }

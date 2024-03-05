@@ -6,6 +6,7 @@ import {
 	ConferenceScheduleUrl,
 	ConferenceData,
 	Footer,
+	Header,
 	HomePageData,
 	PastSpeakers,
 	Menu,
@@ -93,10 +94,31 @@ export async function getConferenceScheduleData(): Promise<ConferenceScheduleUrl
 
 export async function getFooterData(): Promise<Footer> {
 	return createClient(clientConfig).fetch(groq`*[_type == "footer"][0]{
-		_id,
-		_createdAt,
-		_updatedAt,
-		content
+		"logo": {
+			"alt": logo.alt,
+			"url": logo.asset->url
+		},
+		"socialMediaLinks": socialMediaLinks[]{
+			title,
+			"logo": {
+				"url": logo.asset->url,
+				"alt": logo.alt
+			},
+			url,
+			openInNewTab
+		},
+		organizationDetails,
+		copyrightText,
+	}`);
+}
+
+export async function getHeaderData(): Promise<Header> {
+	return createClient(clientConfig).fetch(groq`*[_type == "header"][0]{
+		title,
+		"logo": {
+			"url": logo.asset->url,
+			"alt": logo.alt
+		}
 	}`);
 }
 
@@ -116,44 +138,46 @@ export async function getHomePageData(): Promise<HomePageData> {
             "twitterImageUrl": twitterImage.asset->url,
           },
         },
-		"pageTitle": page_title,
+		"pageTitle": pageTitle,
 		"heroSection": {
-			"heroBackgroundImageUrl": hero_section.hero_background_image.asset->url,
-			"heroImageUrl": hero_section.hero_image.asset->url,
-			"heroHeader": hero_section.hero_header,
-			"heroSubtext1": hero_section.hero_subtext_1,
-			"heroSubtext2": hero_section.hero_subtext_2,
-			"heroPrimaryButton": {
-				"primaryButtonText": hero_section.hero_primary_button.primary_button_text,
-				"primaryButtonLink": hero_section.hero_primary_button.primary_button_link,
-				"primaryButtonNewTab": hero_section.hero_primary_button.primary_button_new_tab
+			"backgroundImageUrl": heroSection.backgroundImage.asset->url,
+			"header": heroSection.header,
+			"primaryButton": {
+				"text": heroSection.primaryButton.text,
+				"url": heroSection.primaryButton.url,
+				"newTab": heroSection.primaryButton.newTab
 			},
-			"heroSecondaryButton": {
-				"secondaryButtonText": hero_section.hero_secondary_button.secondary_button_text,
-				"secondaryButtonLink": hero_section.hero_secondary_button.secondary_button_link,
-				"secondaryButtonNewTab": hero_section.hero_secondary_button.secondary_button_new_tab
+			"secondaryButton": {
+				"text": heroSection.secondaryButton.text,
+				"url": heroSection.secondaryButton.url,
+				"newTab": heroSection.secondaryButton.newTab
 			}
 		},
+		"videoSection": {
+			"sectionTitle": videoSection.sectionTitle,
+			"paragraph": videoSection.paragraph,
+			"youtubeShareLink": videoSection.youtubeShareLink,
+		},
 		"getInvolvedSection": {
-            "getInvolvedHeader" : get_involved_section.get_involved_header,
-			"getInvolvedLinks": get_involved_section.get_involved_links
+            "getInvolvedHeader" : getInvolvedSection.header,
+			"getInvolvedLinks": getInvolvedSection.links
 		},
 		"otherMeetupsSection": {
-			"otherMeetupsHeader": other_meetups_section.other_meetups_header,
-			"otherMeetups": other_meetups_section.other_meetups
+			"otherMeetupsHeader": otherMeetupsSection.header,
+			"otherMeetups": otherMeetupsSection.otherMeetups[]{
+				_key,
+				name,
+				url,
+				"imageUrl": image.asset->url,
+				"imageAlt": image.alt
+			}
 		},
-		"homePageFooter": home_page_footer
 	}`);
 }
 
 export async function getPrimaryMenuData(): Promise<Menu> {
 	return createClient(clientConfig).fetch(groq`*[_type == "menu" && menuTitle == 'Primary Menu'][0] {
 		menuTitle,
-		"headerLogo": {
-			"url": headerLogo.asset->url,
-			"alt": headerLogo.alt
-		},
-		headerTitle,
 		"links": links[]{
 			_key,
 			title,

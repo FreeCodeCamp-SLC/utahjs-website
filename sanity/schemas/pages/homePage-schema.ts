@@ -3,9 +3,10 @@ type UriRuleOptions = {
 	scheme: string[];
 };
 
-type Rule = {
-	uri: (options: UriRuleOptions) => void; // Replace void with the actual return type if it's not void.
-};
+interface RuleType {
+	custom: (validator: (input: string) => boolean | string) => RuleType;
+	uri: (options: UriRuleOptions) => RuleType;
+}
 
 const homePage = {
 	name: `homePage`,
@@ -58,20 +59,9 @@ const homePage = {
 						hotspot: true,
 					},
 				},
-
 				{
 					name: `header`,
 					title: `Header`,
-					type: `string`,
-				},
-				{
-					name: `subtext1`,
-					title: `Subtext 1`,
-					type: `string`,
-				},
-				{
-					name: `subtext2`,
-					title: `Subtext 2`,
 					type: `string`,
 				},
 				{
@@ -88,7 +78,7 @@ const homePage = {
 							name: `url`,
 							title: `Url`,
 							type: `url`,
-							validation: (rule: Rule) =>
+							validation: (rule: RuleType) =>
 								rule.uri({
 									allowRelative: true,
 									scheme: [`http`, `https`, `mailto`, `tel`],
@@ -116,7 +106,7 @@ const homePage = {
 							name: `url`,
 							title: `Url`,
 							type: `url`,
-							validation: (rule: Rule) =>
+							validation: (rule: RuleType) =>
 								rule.uri({
 									allowRelative: true,
 									scheme: [`http`, `https`, `mailto`, `tel`],
@@ -129,6 +119,41 @@ const homePage = {
 							description: `Open Hero Secondary Button in a new tab`,
 						},
 					],
+				},
+			],
+		},
+		{
+			name: `videoSection`,
+			title: `Video Section`,
+			type: `object`,
+			fields: [
+				{
+					name: `sectionTitle`,
+					title: `Section Title`,
+					type: `string`,
+				},
+				{
+					name: `paragraph`,
+					title: `Paragraph`,
+					type: `array`, // Use an array of blocks to allow rich text
+					of: [{ type: `block` }],
+				},
+				{
+					name: `youtubeShareLink`,
+					title: `YouTube Share Link`,
+					type: `url`,
+					description: `Please provide the YouTube video link in the embed format, e.g., "https://www.youtube.com/embed/K1lB9AHUdY4".`,
+					validation: (Rule: RuleType) =>
+						Rule.custom((url) => {
+							// Ensure the url matches exactly the required structure, with no extra segments
+							const pattern = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]+$/;
+							return pattern.test(url)
+								? true
+								: 'URL must be in the exact format: https://www.youtube.com/embed/[videoId]';
+						}).uri({
+							allowRelative: false,
+							scheme: [`http`, `https`],
+						}),
 				},
 			],
 		},
@@ -161,7 +186,7 @@ const homePage = {
 									name: `url`,
 									title: `Url`,
 									type: `url`,
-									validation: (rule: Rule) =>
+									validation: (rule: RuleType) =>
 										rule.uri({
 											allowRelative: true,
 											scheme: [`http`, `https`, `mailto`, `tel`],
@@ -217,7 +242,7 @@ const homePage = {
 									name: `url`,
 									title: `Url`,
 									type: `url`,
-									validation: (rule: Rule) =>
+									validation: (rule: RuleType) =>
 										rule.uri({
 											allowRelative: true,
 											scheme: [`http`, `https`, `mailto`, `tel`],
@@ -241,16 +266,6 @@ const homePage = {
 							],
 						},
 					],
-				},
-			],
-		},
-		{
-			name: `homePageFooter`,
-			title: `Home Page Footer`,
-			type: `array`,
-			of: [
-				{
-					type: `block`,
 				},
 			],
 		},

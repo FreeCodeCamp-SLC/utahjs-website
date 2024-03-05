@@ -13,9 +13,6 @@
 			.brand-container {
 				align-items: center;
 				display: flex;
-				h1 {
-					margin: 0;
-				}
 			}
 
 			button {
@@ -36,22 +33,34 @@
 			}
 		}
 		img {
+			height: auto;
 			margin-right: 2rem;
+			max-width: 55px;
+			&:hover {
+				filter: brightness(0.8);
+			}
+			&:active {
+				filter: brightness(0.6);
+			}
 		}
-		h1 {
+		a:hover {
+			text-decoration: none;
+			filter: brightness(0.8);
+		}
+		p {
 			color: $yellow;
 			font-size: 2.4rem;
+			margin: 0;
 		}
 	}
 	nav {
-		background-color: $black;
+		background-color: $blackBackground;
 
 		ul {
 			@include container;
 			display: flex;
 			list-style: none;
 			padding: 0 2rem;
-			background-color: $black;
 			li {
 				a {
 					display: block;
@@ -119,12 +128,15 @@
 		}
 
 		a {
-			color: #aaaaaa;
+			color: $whiteText;
 			font-size: 1.6rem;
 			text-decoration: none;
 			text-transform: uppercase;
 			&:hover {
-				color: $white;
+				color: $yellow;
+			}
+			&:active {
+				color: #aaaaaa;
 			}
 		}
 	}

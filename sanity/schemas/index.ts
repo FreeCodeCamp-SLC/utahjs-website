@@ -3,6 +3,7 @@ import conference from './conference/conference-schema';
 import conferencePage from './pages/conferencePage-schema';
 import featuredSpeakers from './conference/featuredSpeakers-schema';
 import footer from './siteSettings/footer-schema';
+import header from './siteSettings/header-schema';
 import homePage from './pages/homePage-schema';
 import metaData from './siteSettings/metaData-schema';
 import navigation from './siteSettings/navigation-schema';
@@ -14,6 +15,7 @@ const schemas = [
 	conferencePage,
 	featuredSpeakers,
 	footer,
+	header,
 	homePage,
 	metaData,
 	navigation,
