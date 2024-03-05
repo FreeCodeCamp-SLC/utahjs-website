@@ -1,101 +1,94 @@
-.main {
-	background-color: rgb(255, 255, 255);
-	min-height: calc(100vh - 140px);
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	.homeUTJS {
-		// position: absolute;
-		display: flex;
-		flex-direction: column;
-		-webkit-box-align: center;
+@import '../styles/variables';
+@import '../styles/mixins';
+
+section {
+	&.hero_section {
 		align-items: center;
-		height: fit-content;
-		color: rgb(255, 255, 255);
-		background-color: rgba(22, 29, 14, 0.6);
-		padding: 20px;
-		max-width: 460px;
-		margin: 0px auto;
-		border-radius: 8px;
-		font-size: 14px;
-	}
-	.centerContent {
-		color: white;
-		max-width: 680px;
-		padding: 0px 5px;
-		margin: 20px auto 0px;
-		text-align: left;
-		.homeGetInvolved {
-			margin: 0px 0px 20px;
-			background-color: rgb(34, 34, 34);
+		color: $yellow;
+		display: flex;
+		height: 50vh;
+		padding: 6.4rem 2rem;
+		text-align: center;
+		.wrapper {
+			@include container;
+			background-color: rgba(22, 29, 14, 0.9);
 			border-radius: 8px;
-			padding: 20px;
-			.getInvolvedSection {
-				flex-direction: row;
-				text-align: left;
-				display: flex;
-				align-items: center;
+			height: fit-content;
+			margin: 0 auto;
+			padding: 2rem 2rem;
+			width: fit-content;
+		}
+		h1 {
+			font-size: 5.6rem;
+		}
+		p {
+			margin-bottom: 3rem;
+		}
+		.links {
+			display: flex;
+			gap: 2rem;
+			justify-content: center;
+			.primary_button {
+				@include button;
+			}
+			.secondary_button {
+				@include button($green, $whiteText);
 			}
 		}
 	}
-	.btn {
-		font-weight: 400;
-		text-transform: uppercase;
-		text-decoration: none;
-		display: inline-block;
-		font-weight: 400;
-		color: #212529;
-		text-align: center;
-		vertical-align: middle;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		background-color: transparent;
-		border: 1px solid transparent;
-		padding: 0.375rem 0.75rem;
-		margin-bottom: 40px;
-		font-size: 1rem;
-		line-height: 1.5;
-		border-radius: 0.25rem;
-		transition:
-			color 0.15s ease-in-out,
-			background-color 0.15s ease-in-out,
-			border-color 0.15s ease-in-out,
-			box-shadow 0.15s ease-in-out;
+	&.video_section {
+		background-color: $whiteBackground;
+		.container {
+			@include container;
+			align-items: center;
+			display: grid;
+			gap: 2rem;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			padding: 6.4rem 2rem;
+			.video_iframe {
+				aspect-ratio: 16 / 9;
+				width: 100%;
+			}
+		}
 	}
-	#btnConf0,
-	#btnConf1 {
-		color: rgb(51, 51, 51);
-		background-color: rgb(246, 224, 90);
+	&.meetups_section {
+		background-color: $darkGrey;
+		color: $whiteText;
+		padding: 6.4rem 0;
+		h2 {
+			color: $yellow;
+			margin-bottom: 3rem;
+			text-align: center;
+		}
+		.meetups {
+			align-items: center;
+			display: grid;
+			gap: 3rem 1rem;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			justify-items: center;
+			.meetup {
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				img {
+					height: auto;
+					max-width: 100px;
+				}
+				h3 {
+					margin: 1rem 0 0 0;
+				}
+			}
+		}
 	}
-	#btnSlack0,
-	#btnSlack1 {
-		color: rgb(255, 255, 255);
-		background-color: rgb(15, 165, 19);
-	}
-	#btnEvent {
-		background-color: rgb(32, 149, 242);
-	}
-	#btnLehi {
-		background-color: rgb(101, 22, 217);
-	}
-	#btnSlc {
-		background-color: rgb(177, 19, 186);
-	}
-	#btnOgden {
-		background-color: rgb(232, 29, 98);
-	}
-	#btnLearners {
-		background-color: rgb(254, 86, 33);
-	}
-	#btnLinkedin {
-		background-color: rgb(246, 224, 90);
-		color: rgb(51, 51, 51);
-	}
-	#btnTwitter {
-		background-color: rgb(15, 165, 19);
-	}
-	#btnVideos {
-		background-color: rgb(32, 149, 242);
+}
+
+@include media-query-tablet {
+	section {
+		&.video_section {
+			.container {
+				grid-template-columns: 1fr;
+				padding: 64px 20px;
+			}
+		}
 	}
 }

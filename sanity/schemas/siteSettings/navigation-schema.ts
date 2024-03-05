@@ -9,23 +9,6 @@ const menu = {
 			type: `string`,
 		},
 		{
-			name: `headerLogo`,
-			title: `Header Logo`,
-			type: `image`,
-			fields: [
-				{
-					name: `alt`,
-					title: `Alt Text`,
-					type: `string`,
-				},
-			],
-		},
-		{
-			name: `headerTitle`,
-			title: `Header Title`,
-			type: `string`,
-		},
-		{
 			name: `links`,
 			title: `Links`,
 			type: `array`,

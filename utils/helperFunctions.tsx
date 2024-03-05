@@ -55,3 +55,14 @@ export function generateSponsorSection(sponsorSectionTitle: string, sponsors: Sp
 		</div>
 	);
 }
+
+export function getImageDimensions(url: string) {
+	const match = url.match(/-(\d+)x(\d+)\./);
+	let width = 0;
+	let height = 0;
+	if (match) {
+		width = Number(match[1]);
+		height = Number(match[2]);
+	}
+	return { width, height };
+}
