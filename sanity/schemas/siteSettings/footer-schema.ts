@@ -1,3 +1,12 @@
+type UriRuleOptions = {
+	allowRelative: boolean;
+	scheme: string[];
+};
+interface RuleType {
+	custom: (validator: (input: string) => boolean | string) => RuleType;
+	uri: (options: UriRuleOptions) => RuleType;
+}
+
 const footer = {
 	name: `footer`,
 	title: `Footer`,
@@ -45,11 +54,12 @@ const footer = {
 							name: `url`,
 							title: `URL`,
 							type: `url`,
-							validation: (Rule) =>
+							description: `The URL to the social media page.`,
+							validation: (Rule: RuleType) =>
 								Rule.uri({
+									allowRelative: true,
 									scheme: ['http', 'https'],
 								}),
-							description: `The URL to the social media page.`,
 						},
 						{
 							name: `openInNewTab`,
