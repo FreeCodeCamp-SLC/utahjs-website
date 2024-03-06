@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { featuredSpeakersArray, SponsorArray } from '../types/types';
 
 export function generateFeaturedSpeakersSection(

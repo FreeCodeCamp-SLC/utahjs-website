@@ -1,3 +1,14 @@
+type UriRuleOptions = {
+	allowRelative: boolean;
+	scheme: string[];
+};
+
+interface RuleType {
+	custom: (validator: (input: string) => boolean | string) => RuleType;
+	uri: (options: UriRuleOptions) => RuleType;
+}
+
+import { Rule } from 'sanity';
 import featuredSpeakers from './featuredSpeakers-schema';
 import sponsorSchema from './sponsor-schema';
 
@@ -26,7 +37,7 @@ const conference = {
 			name: `speakersUrl`,
 			title: `Speakers URL`,
 			type: `url`,
-			validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+			validation: (rule: RuleType) =>
 				rule.uri({
 					allowRelative: true,
 					scheme: [`http`, `https`, `mailto`, `tel`],
@@ -36,7 +47,7 @@ const conference = {
 			name: `scheduleUrl`,
 			title: `Schedule URL`,
 			type: `url`,
-			validation: (rule: { uri: (arg0: { allowRelative: boolean; scheme: string[] }) => any }) =>
+			validation: (rule: Rule) =>
 				rule.uri({
 					allowRelative: true,
 					scheme: [`http`, `https`, `mailto`, `tel`],
@@ -114,7 +125,7 @@ const conference = {
 			title: `name`,
 			date: `date`,
 		},
-		prepare(selection: { title: any; date: any }) {
+		prepare(selection: { title: string; date: string | undefined }) {
 			const { title, date } = selection;
 			return {
 				title: title,
