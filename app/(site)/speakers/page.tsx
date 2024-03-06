@@ -36,7 +36,7 @@ export default async function Speakers() {
 		<div className={styles.container}>
 			<h1>Conference Speakers</h1>
 			<nav>
-				<h2>Year:</h2>
+				<p>Year:</p>
 				<ul>
 					{sessionizeUrls.map((session) => {
 						const year = new Date(session.date).getFullYear();

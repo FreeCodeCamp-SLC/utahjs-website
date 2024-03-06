@@ -3,13 +3,17 @@
 
 .container {
 	@include container;
+	h1 {
+		margin-top: 4rem;
+	}
 	nav {
 		align-items: center;
 		display: flex;
 		gap: 1.6rem;
-		h2 {
+		p {
 			font-size: 1.8rem;
 			font-weight: bold;
+			margin: 0;
 		}
 	}
 	ul {

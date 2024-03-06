@@ -37,7 +37,7 @@ export default async function Speakers({ params }: { params: { year: string } })
 		<div className={styles.container}>
 			<h1>Conference Speakers</h1>
 			<nav>
-				<h2>Year:</h2>
+				<p>Year:</p>
 				<ul>
 					{sessionizeUrls.map((session) => {
 						const year = new Date(session.date).getFullYear();
@@ -69,7 +69,7 @@ export default async function Speakers({ params }: { params: { year: string } })
 							</div>
 						</div>
 						<p>{speaker.bio}</p>
-						<p>Presentation: {speaker.sessions.map((session) => session.name)}</p>
+						<p className={styles.presentation}>Presentation: {speaker.sessions.map((session) => session.name)}</p>
 					</article>
 				))}
 			</div>

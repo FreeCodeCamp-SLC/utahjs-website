@@ -6,7 +6,6 @@ import { getImageDimensions } from '@/utils/helperFunctions';
 
 export default async function Footer() {
 	const footerData = await getFooterData();
-	console.log(footerData);
 	const footerLogoDimensions = getImageDimensions(footerData.logo.url);
 	if (!footerData) {
 		return (
