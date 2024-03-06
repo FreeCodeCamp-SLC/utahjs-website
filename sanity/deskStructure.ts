@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // import sanity typescript definitions
 export const myStructure = (S: any) =>
 	// This is the structure used by Sanity Studio to build the Desk, it's the very first pane to the left.

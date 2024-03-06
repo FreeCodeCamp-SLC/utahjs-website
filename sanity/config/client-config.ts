@@ -6,6 +6,7 @@ const clientConfig = {
 	projectId: SANITY_PROJECT_ID,
 	dataset: SANITY_DATASET,
 	apiVersion: `2023-06-22`,
+	useCdn: false,
 };
 
 export default clientConfig;

@@ -1,4 +1,3 @@
-// schemas/pet.js
 const featuredSpeakers = {
 	name: `featuredSpeakers`,
 	title: `Featured Speakers`,
